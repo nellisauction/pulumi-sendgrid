@@ -1,1 +1,111 @@
-{}
+{
+    "auto-aliasing": {
+        "resources": {
+            "sendgrid_api_key": {
+                "current": "sendgrid:index/apiKey:ApiKey",
+                "fields": {
+                    "scopes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "sendgrid_domain_authentication": {
+                "current": "sendgrid:index/domainAuthentication:DomainAuthentication",
+                "fields": {
+                    "dns": {
+                        "maxItemsOne": false
+                    },
+                    "ips": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "sendgrid_domain_authentication_validation": {
+                "current": "sendgrid:index/domainAuthenticationValidation:DomainAuthenticationValidation"
+            },
+            "sendgrid_event_webhook": {
+                "current": "sendgrid:index/eventWebhook:EventWebhook"
+            },
+            "sendgrid_link_branding": {
+                "current": "sendgrid:index/linkBranding:LinkBranding",
+                "fields": {
+                    "dns": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "sendgrid_parse_webhook": {
+                "current": "sendgrid:index/parseWebhook:ParseWebhook"
+            },
+            "sendgrid_sso_certificate": {
+                "current": "sendgrid:index/ssoCertificate:SsoCertificate"
+            },
+            "sendgrid_sso_integration": {
+                "current": "sendgrid:index/ssoIntegration:SsoIntegration"
+            },
+            "sendgrid_subuser": {
+                "current": "sendgrid:index/subuser:Subuser",
+                "fields": {
+                    "ips": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "sendgrid_teammate": {
+                "current": "sendgrid:index/teammate:Teammate",
+                "fields": {
+                    "scopes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "sendgrid_template": {
+                "current": "sendgrid:index/template:Template"
+            },
+            "sendgrid_template_version": {
+                "current": "sendgrid:index/templateVersion:TemplateVersion"
+            },
+            "sendgrid_unsubscribe_group": {
+                "current": "sendgrid:index/unsubscribeGroup:UnsubscribeGroup"
+            },
+            "sendgrid_webhook_security_policy": {
+                "current": "sendgrid:index/webhookSecurityPolicy:WebhookSecurityPolicy",
+                "fields": {
+                    "oauth": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "scopes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "signature": {
+                        "maxItemsOne": true
+                    }
+                }
+            }
+        },
+        "datasources": {
+            "sendgrid_teammate": {
+                "current": "sendgrid:index/getTeammate:getTeammate",
+                "fields": {
+                    "scopes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "sendgrid_template": {
+                "current": "sendgrid:index/getTemplate:getTemplate"
+            },
+            "sendgrid_template_version": {
+                "current": "sendgrid:index/getTemplateVersion:getTemplateVersion"
+            },
+            "sendgrid_unsubscribe_group": {
+                "current": "sendgrid:index/getUnsubscribeGroup:getUnsubscribeGroup"
+            }
+        }
+    },
+    "auto-settings": {}
+}

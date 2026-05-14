@@ -1,6 +1,6 @@
 {
     "name": "@nellisauction/pulumi-sendgrid",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "description": "A Pulumi package for managing SendGrid resources.",
     "keywords": [
         "pulumi",
@@ -8,10 +8,7 @@
         "category/infrastructure"
     ],
     "homepage": "https://github.com/nellisauction/pulumi-sendgrid",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/nellisauction/pulumi-sendgrid.git"
-    },
+    "repository": "https://github.com/nellisauction/pulumi-sendgrid",
     "license": "Apache-2.0",
     "scripts": {
         "build": "tsc"
@@ -26,7 +23,7 @@
     "pulumi": {
         "resource": true,
         "name": "sendgrid",
-        "version": "0.0.0",
+        "version": "0.1.0",
         "server": "github://api.github.com/nellisauction/pulumi-sendgrid"
     }
 }

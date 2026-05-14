@@ -1,1 +1,1945 @@
-{}
+{
+    "name": "sendgrid",
+    "displayName": "SendGrid",
+    "description": "A Pulumi package for managing SendGrid resources.",
+    "keywords": [
+        "pulumi",
+        "sendgrid",
+        "category/infrastructure"
+    ],
+    "homepage": "https://github.com/nellisauction/pulumi-sendgrid",
+    "license": "Apache-2.0",
+    "attribution": "This Pulumi package is based on the [`sendgrid` Terraform Provider](https://github.com/anna-money/terraform-provider-sendgrid).",
+    "repository": "https://github.com/nellisauction/pulumi-sendgrid",
+    "pluginDownloadURL": "github://api.github.com/nellisauction/pulumi-sendgrid",
+    "publisher": "NellisAuction",
+    "meta": {
+        "moduleFormat": "(.*)(?:/[^/]*)"
+    },
+    "language": {
+        "csharp": {
+            "packageReferences": {
+                "Pulumi": "3.*"
+            },
+            "namespaces": {
+                "sendgrid": "SendGrid"
+            },
+            "compatibility": "tfbridge20",
+            "respectSchemaVersion": true
+        },
+        "go": {
+            "importBasePath": "github.com/nellisauction/pulumi-sendgrid/sdk/go/sendgrid",
+            "generateResourceContainerTypes": true,
+            "generateExtraInputTypes": true,
+            "respectSchemaVersion": true
+        },
+        "nodejs": {
+            "packageName": "@nellisauction/pulumi-sendgrid",
+            "packageDescription": "A Pulumi package for managing SendGrid resources.",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/anna-money/terraform-provider-sendgrid)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-sendgrid` repo](https://github.com/nellisauction/pulumi-sendgrid/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-sendgrid` repo](https://github.com/anna-money/terraform-provider-sendgrid/issues).",
+            "compatibility": "tfbridge20",
+            "disableUnionOutputTypes": true,
+            "respectSchemaVersion": true
+        },
+        "python": {
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/anna-money/terraform-provider-sendgrid)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-sendgrid` repo](https://github.com/nellisauction/pulumi-sendgrid/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-sendgrid` repo](https://github.com/anna-money/terraform-provider-sendgrid/issues).",
+            "compatibility": "tfbridge20",
+            "respectSchemaVersion": true,
+            "pyproject": {
+                "enabled": true
+            }
+        }
+    },
+    "config": {
+        "variables": {
+            "apiKey": {
+                "type": "string",
+                "defaultInfo": {
+                    "environment": [
+                        "SENDGRID_API_KEY"
+                    ]
+                },
+                "secret": true
+            },
+            "host": {
+                "type": "string",
+                "defaultInfo": {
+                    "environment": [
+                        "SENDGRID_HOST"
+                    ]
+                }
+            },
+            "subuser": {
+                "type": "string",
+                "defaultInfo": {
+                    "environment": [
+                        "SENDGRID_SUBUSER"
+                    ]
+                }
+            }
+        }
+    },
+    "types": {
+        "sendgrid:index/DomainAuthenticationDn:DomainAuthenticationDn": {
+            "properties": {
+                "data": {
+                    "type": "string",
+                    "description": "The actual DNS record.\n"
+                },
+                "host": {
+                    "type": "string",
+                    "description": "The domain that this CNAME is created for.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of DNS record.\n"
+                },
+                "valid": {
+                    "type": "boolean",
+                    "description": "Indicates if this is a valid CNAME.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "data",
+                        "host",
+                        "type",
+                        "valid"
+                    ]
+                }
+            }
+        },
+        "sendgrid:index/LinkBrandingDn:LinkBrandingDn": {
+            "properties": {
+                "data": {
+                    "type": "string",
+                    "description": "The actual DNS record.\n"
+                },
+                "host": {
+                    "type": "string",
+                    "description": "The domain that this CNAME is created for.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of DNS record.\n"
+                },
+                "valid": {
+                    "type": "boolean",
+                    "description": "Indicates if this is a valid CNAME.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "data",
+                        "host",
+                        "type",
+                        "valid"
+                    ]
+                }
+            }
+        },
+        "sendgrid:index/WebhookSecurityPolicyOauth:WebhookSecurityPolicyOauth": {
+            "properties": {
+                "clientId": {
+                    "type": "string",
+                    "description": "The OAuth client ID.\n"
+                },
+                "clientSecret": {
+                    "type": "string",
+                    "description": "The OAuth client secret. This value is sensitive and will not be displayed in logs.\n",
+                    "secret": true
+                },
+                "scopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of OAuth scopes required for webhook access.\n"
+                },
+                "tokenUrl": {
+                    "type": "string",
+                    "description": "The OAuth token URL.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "clientId",
+                "clientSecret",
+                "scopes",
+                "tokenUrl"
+            ]
+        },
+        "sendgrid:index/WebhookSecurityPolicySignature:WebhookSecurityPolicySignature": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether signature verification is enabled for this webhook security policy.\n"
+                },
+                "publicKey": {
+                    "type": "string",
+                    "description": "The public key used for signature verification. This is computed by SendGrid when signature is enabled.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enabled",
+                        "publicKey"
+                    ]
+                }
+            }
+        }
+    },
+    "provider": {
+        "description": "The provider type for the sendgrid package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
+        "properties": {
+            "apiKey": {
+                "type": "string",
+                "secret": true
+            },
+            "host": {
+                "type": "string"
+            },
+            "subuser": {
+                "type": "string"
+            }
+        },
+        "inputProperties": {
+            "apiKey": {
+                "type": "string",
+                "defaultInfo": {
+                    "environment": [
+                        "SENDGRID_API_KEY"
+                    ]
+                },
+                "secret": true
+            },
+            "host": {
+                "type": "string",
+                "defaultInfo": {
+                    "environment": [
+                        "SENDGRID_HOST"
+                    ]
+                }
+            },
+            "subuser": {
+                "type": "string",
+                "defaultInfo": {
+                    "environment": [
+                        "SENDGRID_SUBUSER"
+                    ]
+                }
+            }
+        },
+        "methods": {
+            "terraformConfig": "pulumi:providers:sendgrid/terraformConfig"
+        }
+    },
+    "resources": {
+        "sendgrid:index/apiKey:ApiKey": {
+            "properties": {
+                "apiKey": {
+                    "type": "string",
+                    "description": "The API key created by the API.",
+                    "secret": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name you will use to describe this API Key."
+                },
+                "scopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The individual permissions that you are giving to this API Key."
+                },
+                "subUserOnBehalfOf": {
+                    "type": "string",
+                    "description": "The subuser's username. The API call is made on behalf of the subuser account."
+                }
+            },
+            "required": [
+                "apiKey",
+                "name",
+                "scopes"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name you will use to describe this API Key."
+                },
+                "scopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The individual permissions that you are giving to this API Key."
+                },
+                "subUserOnBehalfOf": {
+                    "type": "string",
+                    "description": "The subuser's username. The API call is made on behalf of the subuser account."
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ApiKey resources.\n",
+                "properties": {
+                    "apiKey": {
+                        "type": "string",
+                        "description": "The API key created by the API.",
+                        "secret": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name you will use to describe this API Key."
+                    },
+                    "scopes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The individual permissions that you are giving to this API Key."
+                    },
+                    "subUserOnBehalfOf": {
+                        "type": "string",
+                        "description": "The subuser's username. The API call is made on behalf of the subuser account."
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sendgrid:index/domainAuthentication:DomainAuthentication": {
+            "properties": {
+                "automaticSecurity": {
+                    "type": "boolean",
+                    "description": "Whether to allow SendGrid to manage your SPF records, DKIM keys, and DKIM key rotation."
+                },
+                "customDkimSelector": {
+                    "type": "string",
+                    "description": "Add a custom DKIM selector. Accepts three letters or numbers."
+                },
+                "customSpf": {
+                    "type": "boolean",
+                    "description": "Specify whether to use a custom SPF or allow SendGrid to manage your SPF. This option is only available to authenticated domains set up for manual security."
+                },
+                "dns": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sendgrid:index/DomainAuthenticationDn:DomainAuthenticationDn"
+                    },
+                    "description": "The DNS records used to authenticate the sending domain."
+                },
+                "domain": {
+                    "type": "string",
+                    "description": "Domain being authenticated."
+                },
+                "ips": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The IP addresses that will be included in the custom SPF record for this."
+                },
+                "isDefault": {
+                    "type": "boolean",
+                    "description": "Whether to use this authenticated domain as the fallback if no authenticated domains match the sender's domain."
+                },
+                "subUserOnBehalfOf": {
+                    "type": "string",
+                    "description": "The subuser's username. The API call is made on behalf of the subuser account."
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "The subdomain to use for this authenticated domain."
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username associated with this domain."
+                },
+                "valid": {
+                    "type": "boolean",
+                    "description": "Indicates if this is a valid authenticated domain or not."
+                }
+            },
+            "required": [
+                "dns",
+                "domain",
+                "ips",
+                "subdomain",
+                "username",
+                "valid"
+            ],
+            "inputProperties": {
+                "automaticSecurity": {
+                    "type": "boolean",
+                    "description": "Whether to allow SendGrid to manage your SPF records, DKIM keys, and DKIM key rotation.",
+                    "willReplaceOnChanges": true
+                },
+                "customDkimSelector": {
+                    "type": "string",
+                    "description": "Add a custom DKIM selector. Accepts three letters or numbers.",
+                    "willReplaceOnChanges": true
+                },
+                "customSpf": {
+                    "type": "boolean",
+                    "description": "Specify whether to use a custom SPF or allow SendGrid to manage your SPF. This option is only available to authenticated domains set up for manual security."
+                },
+                "domain": {
+                    "type": "string",
+                    "description": "Domain being authenticated.",
+                    "willReplaceOnChanges": true
+                },
+                "ips": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The IP addresses that will be included in the custom SPF record for this.",
+                    "willReplaceOnChanges": true
+                },
+                "isDefault": {
+                    "type": "boolean",
+                    "description": "Whether to use this authenticated domain as the fallback if no authenticated domains match the sender's domain."
+                },
+                "subUserOnBehalfOf": {
+                    "type": "string",
+                    "description": "The subuser's username. The API call is made on behalf of the subuser account."
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "The subdomain to use for this authenticated domain.",
+                    "willReplaceOnChanges": true
+                },
+                "valid": {
+                    "type": "boolean",
+                    "description": "Indicates if this is a valid authenticated domain or not."
+                }
+            },
+            "requiredInputs": [
+                "domain"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DomainAuthentication resources.\n",
+                "properties": {
+                    "automaticSecurity": {
+                        "type": "boolean",
+                        "description": "Whether to allow SendGrid to manage your SPF records, DKIM keys, and DKIM key rotation.",
+                        "willReplaceOnChanges": true
+                    },
+                    "customDkimSelector": {
+                        "type": "string",
+                        "description": "Add a custom DKIM selector. Accepts three letters or numbers.",
+                        "willReplaceOnChanges": true
+                    },
+                    "customSpf": {
+                        "type": "boolean",
+                        "description": "Specify whether to use a custom SPF or allow SendGrid to manage your SPF. This option is only available to authenticated domains set up for manual security."
+                    },
+                    "dns": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sendgrid:index/DomainAuthenticationDn:DomainAuthenticationDn"
+                        },
+                        "description": "The DNS records used to authenticate the sending domain."
+                    },
+                    "domain": {
+                        "type": "string",
+                        "description": "Domain being authenticated.",
+                        "willReplaceOnChanges": true
+                    },
+                    "ips": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The IP addresses that will be included in the custom SPF record for this.",
+                        "willReplaceOnChanges": true
+                    },
+                    "isDefault": {
+                        "type": "boolean",
+                        "description": "Whether to use this authenticated domain as the fallback if no authenticated domains match the sender's domain."
+                    },
+                    "subUserOnBehalfOf": {
+                        "type": "string",
+                        "description": "The subuser's username. The API call is made on behalf of the subuser account."
+                    },
+                    "subdomain": {
+                        "type": "string",
+                        "description": "The subdomain to use for this authenticated domain.",
+                        "willReplaceOnChanges": true
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "The username associated with this domain."
+                    },
+                    "valid": {
+                        "type": "boolean",
+                        "description": "Indicates if this is a valid authenticated domain or not."
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sendgrid:index/domainAuthenticationValidation:DomainAuthenticationValidation": {
+            "properties": {
+                "domainAuthenticationId": {
+                    "type": "string",
+                    "description": "Id of the domain authentication to validate."
+                },
+                "subUserOnBehalfOf": {
+                    "type": "string",
+                    "description": "The subuser username for on-behalf-of API calls."
+                },
+                "valid": {
+                    "type": "boolean",
+                    "description": "Indicates if this is a valid authenticated domain or not."
+                }
+            },
+            "required": [
+                "domainAuthenticationId",
+                "valid"
+            ],
+            "inputProperties": {
+                "domainAuthenticationId": {
+                    "type": "string",
+                    "description": "Id of the domain authentication to validate.",
+                    "willReplaceOnChanges": true
+                },
+                "subUserOnBehalfOf": {
+                    "type": "string",
+                    "description": "The subuser username for on-behalf-of API calls.",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "domainAuthenticationId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DomainAuthenticationValidation resources.\n",
+                "properties": {
+                    "domainAuthenticationId": {
+                        "type": "string",
+                        "description": "Id of the domain authentication to validate.",
+                        "willReplaceOnChanges": true
+                    },
+                    "subUserOnBehalfOf": {
+                        "type": "string",
+                        "description": "The subuser username for on-behalf-of API calls.",
+                        "willReplaceOnChanges": true
+                    },
+                    "valid": {
+                        "type": "boolean",
+                        "description": "Indicates if this is a valid authenticated domain or not."
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sendgrid:index/eventWebhook:EventWebhook": {
+            "properties": {
+                "bounce": {
+                    "type": "boolean",
+                    "description": "Receiving server could not or would not accept message."
+                },
+                "click": {
+                    "type": "boolean",
+                    "description": "Recipient clicked on a link within the message. You need to enable Click Tracking for getting this type of event."
+                },
+                "deferred": {
+                    "type": "boolean",
+                    "description": "Recipient's email server temporarily rejected message."
+                },
+                "delivered": {
+                    "type": "boolean",
+                    "description": "Message has been successfully delivered to the receiving server."
+                },
+                "dropped": {
+                    "type": "boolean",
+                    "description": "You may see the following drop reasons: Invalid SMTPAPI header, Spam Content (if spam checker app enabled), Unsubscribed Address, Bounced Address, Spam Reporting Address, Invalid, Recipient List over Package Quota."
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Indicates if the event webhook is enabled."
+                },
+                "friendlyName": {
+                    "type": "string",
+                    "description": "Friendly name for the webhook to help you identify it."
+                },
+                "groupResubscribe": {
+                    "type": "boolean",
+                    "description": "Recipient resubscribes to specific group by updating preferences. You need to enable Subscription Tracking for getting this type of event."
+                },
+                "groupUnsubscribe": {
+                    "type": "boolean",
+                    "description": "Recipient unsubscribe from specific group, by either direct link or updating preferences. You need to enable Subscription Tracking for getting this type of event."
+                },
+                "oauthClientId": {
+                    "type": "string",
+                    "description": "The client ID Twilio SendGrid sends to your OAuth server or service provider to generate an OAuth access token."
+                },
+                "oauthClientSecret": {
+                    "type": "string",
+                    "description": "This secret is needed only once to create an access token. SendGrid will store this secret, allowing you to update your Client ID and Token URL without passing the secret to SendGrid again. When passing data in this field, you must also include the\u003cspan pulumi-lang-nodejs=\" oauthClientId \" pulumi-lang-dotnet=\" OauthClientId \" pulumi-lang-go=\" oauthClientId \" pulumi-lang-python=\" oauth_client_id \" pulumi-lang-yaml=\" oauthClientId \" pulumi-lang-java=\" oauthClientId \"\u003e oauthClientId \u003c/span\u003eand\u003cspan pulumi-lang-nodejs=\" oauthTokenUrl \" pulumi-lang-dotnet=\" OauthTokenUrl \" pulumi-lang-go=\" oauthTokenUrl \" pulumi-lang-python=\" oauth_token_url \" pulumi-lang-yaml=\" oauthTokenUrl \" pulumi-lang-java=\" oauthTokenUrl \"\u003e oauthTokenUrl \u003c/span\u003efields.",
+                    "secret": true
+                },
+                "oauthTokenUrl": {
+                    "type": "string",
+                    "description": "The URL where Twilio SendGrid sends the Client ID and Client Secret to generate an access token. This should be your OAuth server or service provider. When passing data in this field, you must also include the\u003cspan pulumi-lang-nodejs=\" oauthClientId \" pulumi-lang-dotnet=\" OauthClientId \" pulumi-lang-go=\" oauthClientId \" pulumi-lang-python=\" oauth_client_id \" pulumi-lang-yaml=\" oauthClientId \" pulumi-lang-java=\" oauthClientId \"\u003e oauthClientId \u003c/span\u003efield."
+                },
+                "open": {
+                    "type": "boolean",
+                    "description": "Recipient has opened the HTML message. You need to enable Open Tracking for getting this type of event."
+                },
+                "processed": {
+                    "type": "boolean",
+                    "description": "Message has been received and is ready to be delivered."
+                },
+                "publicKey": {
+                    "type": "string",
+                    "description": "The public key used to sign the event webhook. Only present if 'signed' is true"
+                },
+                "signed": {
+                    "type": "boolean",
+                    "description": "Should the event webhook use signing?"
+                },
+                "spamReport": {
+                    "type": "boolean",
+                    "description": "Recipient marked a message as spam."
+                },
+                "unsubscribe": {
+                    "type": "boolean",
+                    "description": "Recipient clicked on message's subscription management link. You need to enable Subscription Tracking for getting this type of event."
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The public URL where you would like SendGrid to POST the data events from your email. Any emails sent with the given hostname provided (whose MX records have been updated to point to SendGrid) will be eventd and POSTed to this URL."
+                }
+            },
+            "required": [
+                "enabled",
+                "publicKey",
+                "url"
+            ],
+            "inputProperties": {
+                "bounce": {
+                    "type": "boolean",
+                    "description": "Receiving server could not or would not accept message."
+                },
+                "click": {
+                    "type": "boolean",
+                    "description": "Recipient clicked on a link within the message. You need to enable Click Tracking for getting this type of event."
+                },
+                "deferred": {
+                    "type": "boolean",
+                    "description": "Recipient's email server temporarily rejected message."
+                },
+                "delivered": {
+                    "type": "boolean",
+                    "description": "Message has been successfully delivered to the receiving server."
+                },
+                "dropped": {
+                    "type": "boolean",
+                    "description": "You may see the following drop reasons: Invalid SMTPAPI header, Spam Content (if spam checker app enabled), Unsubscribed Address, Bounced Address, Spam Reporting Address, Invalid, Recipient List over Package Quota."
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Indicates if the event webhook is enabled."
+                },
+                "friendlyName": {
+                    "type": "string",
+                    "description": "Friendly name for the webhook to help you identify it."
+                },
+                "groupResubscribe": {
+                    "type": "boolean",
+                    "description": "Recipient resubscribes to specific group by updating preferences. You need to enable Subscription Tracking for getting this type of event."
+                },
+                "groupUnsubscribe": {
+                    "type": "boolean",
+                    "description": "Recipient unsubscribe from specific group, by either direct link or updating preferences. You need to enable Subscription Tracking for getting this type of event."
+                },
+                "oauthClientId": {
+                    "type": "string",
+                    "description": "The client ID Twilio SendGrid sends to your OAuth server or service provider to generate an OAuth access token."
+                },
+                "oauthClientSecret": {
+                    "type": "string",
+                    "description": "This secret is needed only once to create an access token. SendGrid will store this secret, allowing you to update your Client ID and Token URL without passing the secret to SendGrid again. When passing data in this field, you must also include the\u003cspan pulumi-lang-nodejs=\" oauthClientId \" pulumi-lang-dotnet=\" OauthClientId \" pulumi-lang-go=\" oauthClientId \" pulumi-lang-python=\" oauth_client_id \" pulumi-lang-yaml=\" oauthClientId \" pulumi-lang-java=\" oauthClientId \"\u003e oauthClientId \u003c/span\u003eand\u003cspan pulumi-lang-nodejs=\" oauthTokenUrl \" pulumi-lang-dotnet=\" OauthTokenUrl \" pulumi-lang-go=\" oauthTokenUrl \" pulumi-lang-python=\" oauth_token_url \" pulumi-lang-yaml=\" oauthTokenUrl \" pulumi-lang-java=\" oauthTokenUrl \"\u003e oauthTokenUrl \u003c/span\u003efields.",
+                    "secret": true
+                },
+                "oauthTokenUrl": {
+                    "type": "string",
+                    "description": "The URL where Twilio SendGrid sends the Client ID and Client Secret to generate an access token. This should be your OAuth server or service provider. When passing data in this field, you must also include the\u003cspan pulumi-lang-nodejs=\" oauthClientId \" pulumi-lang-dotnet=\" OauthClientId \" pulumi-lang-go=\" oauthClientId \" pulumi-lang-python=\" oauth_client_id \" pulumi-lang-yaml=\" oauthClientId \" pulumi-lang-java=\" oauthClientId \"\u003e oauthClientId \u003c/span\u003efield."
+                },
+                "open": {
+                    "type": "boolean",
+                    "description": "Recipient has opened the HTML message. You need to enable Open Tracking for getting this type of event."
+                },
+                "processed": {
+                    "type": "boolean",
+                    "description": "Message has been received and is ready to be delivered."
+                },
+                "signed": {
+                    "type": "boolean",
+                    "description": "Should the event webhook use signing?"
+                },
+                "spamReport": {
+                    "type": "boolean",
+                    "description": "Recipient marked a message as spam."
+                },
+                "unsubscribe": {
+                    "type": "boolean",
+                    "description": "Recipient clicked on message's subscription management link. You need to enable Subscription Tracking for getting this type of event."
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The public URL where you would like SendGrid to POST the data events from your email. Any emails sent with the given hostname provided (whose MX records have been updated to point to SendGrid) will be eventd and POSTed to this URL."
+                }
+            },
+            "requiredInputs": [
+                "enabled",
+                "url"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering EventWebhook resources.\n",
+                "properties": {
+                    "bounce": {
+                        "type": "boolean",
+                        "description": "Receiving server could not or would not accept message."
+                    },
+                    "click": {
+                        "type": "boolean",
+                        "description": "Recipient clicked on a link within the message. You need to enable Click Tracking for getting this type of event."
+                    },
+                    "deferred": {
+                        "type": "boolean",
+                        "description": "Recipient's email server temporarily rejected message."
+                    },
+                    "delivered": {
+                        "type": "boolean",
+                        "description": "Message has been successfully delivered to the receiving server."
+                    },
+                    "dropped": {
+                        "type": "boolean",
+                        "description": "You may see the following drop reasons: Invalid SMTPAPI header, Spam Content (if spam checker app enabled), Unsubscribed Address, Bounced Address, Spam Reporting Address, Invalid, Recipient List over Package Quota."
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Indicates if the event webhook is enabled."
+                    },
+                    "friendlyName": {
+                        "type": "string",
+                        "description": "Friendly name for the webhook to help you identify it."
+                    },
+                    "groupResubscribe": {
+                        "type": "boolean",
+                        "description": "Recipient resubscribes to specific group by updating preferences. You need to enable Subscription Tracking for getting this type of event."
+                    },
+                    "groupUnsubscribe": {
+                        "type": "boolean",
+                        "description": "Recipient unsubscribe from specific group, by either direct link or updating preferences. You need to enable Subscription Tracking for getting this type of event."
+                    },
+                    "oauthClientId": {
+                        "type": "string",
+                        "description": "The client ID Twilio SendGrid sends to your OAuth server or service provider to generate an OAuth access token."
+                    },
+                    "oauthClientSecret": {
+                        "type": "string",
+                        "description": "This secret is needed only once to create an access token. SendGrid will store this secret, allowing you to update your Client ID and Token URL without passing the secret to SendGrid again. When passing data in this field, you must also include the\u003cspan pulumi-lang-nodejs=\" oauthClientId \" pulumi-lang-dotnet=\" OauthClientId \" pulumi-lang-go=\" oauthClientId \" pulumi-lang-python=\" oauth_client_id \" pulumi-lang-yaml=\" oauthClientId \" pulumi-lang-java=\" oauthClientId \"\u003e oauthClientId \u003c/span\u003eand\u003cspan pulumi-lang-nodejs=\" oauthTokenUrl \" pulumi-lang-dotnet=\" OauthTokenUrl \" pulumi-lang-go=\" oauthTokenUrl \" pulumi-lang-python=\" oauth_token_url \" pulumi-lang-yaml=\" oauthTokenUrl \" pulumi-lang-java=\" oauthTokenUrl \"\u003e oauthTokenUrl \u003c/span\u003efields.",
+                        "secret": true
+                    },
+                    "oauthTokenUrl": {
+                        "type": "string",
+                        "description": "The URL where Twilio SendGrid sends the Client ID and Client Secret to generate an access token. This should be your OAuth server or service provider. When passing data in this field, you must also include the\u003cspan pulumi-lang-nodejs=\" oauthClientId \" pulumi-lang-dotnet=\" OauthClientId \" pulumi-lang-go=\" oauthClientId \" pulumi-lang-python=\" oauth_client_id \" pulumi-lang-yaml=\" oauthClientId \" pulumi-lang-java=\" oauthClientId \"\u003e oauthClientId \u003c/span\u003efield."
+                    },
+                    "open": {
+                        "type": "boolean",
+                        "description": "Recipient has opened the HTML message. You need to enable Open Tracking for getting this type of event."
+                    },
+                    "processed": {
+                        "type": "boolean",
+                        "description": "Message has been received and is ready to be delivered."
+                    },
+                    "publicKey": {
+                        "type": "string",
+                        "description": "The public key used to sign the event webhook. Only present if 'signed' is true"
+                    },
+                    "signed": {
+                        "type": "boolean",
+                        "description": "Should the event webhook use signing?"
+                    },
+                    "spamReport": {
+                        "type": "boolean",
+                        "description": "Recipient marked a message as spam."
+                    },
+                    "unsubscribe": {
+                        "type": "boolean",
+                        "description": "Recipient clicked on message's subscription management link. You need to enable Subscription Tracking for getting this type of event."
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "The public URL where you would like SendGrid to POST the data events from your email. Any emails sent with the given hostname provided (whose MX records have been updated to point to SendGrid) will be eventd and POSTed to this URL."
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sendgrid:index/linkBranding:LinkBranding": {
+            "properties": {
+                "dns": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sendgrid:index/LinkBrandingDn:LinkBrandingDn"
+                    },
+                    "description": "The DNS records used to authenticate the sending domain."
+                },
+                "domain": {
+                    "type": "string",
+                    "description": "Domain being authenticated."
+                },
+                "isDefault": {
+                    "type": "boolean",
+                    "description": "Indicates if this is the default link branding."
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "The subdomain to use for this link branding."
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username associated with this domain."
+                },
+                "valid": {
+                    "type": "boolean",
+                    "description": "Indicates if this is a valid link branding or not. Set to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e to attempt validation on first update."
+                }
+            },
+            "required": [
+                "dns",
+                "domain",
+                "subdomain",
+                "username",
+                "valid"
+            ],
+            "inputProperties": {
+                "domain": {
+                    "type": "string",
+                    "description": "Domain being authenticated.",
+                    "willReplaceOnChanges": true
+                },
+                "isDefault": {
+                    "type": "boolean",
+                    "description": "Indicates if this is the default link branding."
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "The subdomain to use for this link branding.",
+                    "willReplaceOnChanges": true
+                },
+                "valid": {
+                    "type": "boolean",
+                    "description": "Indicates if this is a valid link branding or not. Set to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e to attempt validation on first update."
+                }
+            },
+            "requiredInputs": [
+                "domain"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering LinkBranding resources.\n",
+                "properties": {
+                    "dns": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sendgrid:index/LinkBrandingDn:LinkBrandingDn"
+                        },
+                        "description": "The DNS records used to authenticate the sending domain."
+                    },
+                    "domain": {
+                        "type": "string",
+                        "description": "Domain being authenticated.",
+                        "willReplaceOnChanges": true
+                    },
+                    "isDefault": {
+                        "type": "boolean",
+                        "description": "Indicates if this is the default link branding."
+                    },
+                    "subdomain": {
+                        "type": "string",
+                        "description": "The subdomain to use for this link branding.",
+                        "willReplaceOnChanges": true
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "The username associated with this domain."
+                    },
+                    "valid": {
+                        "type": "boolean",
+                        "description": "Indicates if this is a valid link branding or not. Set to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e to attempt validation on first update."
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sendgrid:index/parseWebhook:ParseWebhook": {
+            "properties": {
+                "hostname": {
+                    "type": "string",
+                    "description": "A specific and unique domain or subdomain that you have created to use exclusively to parse your incoming email. For example, parse.yourdomain.com."
+                },
+                "sendRaw": {
+                    "type": "boolean",
+                    "description": "Indicates if you would like SendGrid to post the original MIME-type content of your parsed email. When this parameter is set to \"true\", SendGrid will send a JSON payload of the content of your email."
+                },
+                "spamCheck": {
+                    "type": "boolean",
+                    "description": "Indicates if you would like SendGrid to check the content parsed from your emails for spam before POSTing them to your domain."
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The public URL where you would like SendGrid to POST the data parsed from your email. Any emails sent with the given hostname provided (whose MX records have been updated to point to SendGrid) will be parsed and POSTed to this URL."
+                },
+                "webhookSecurityPolicyId": {
+                    "type": "string",
+                    "description": "The ID of the webhook security policy to apply to this parse webhook. See the \u003cspan pulumi-lang-nodejs=\"`sendgrid.WebhookSecurityPolicy`\" pulumi-lang-dotnet=\"`sendgrid.WebhookSecurityPolicy`\" pulumi-lang-go=\"`WebhookSecurityPolicy`\" pulumi-lang-python=\"`WebhookSecurityPolicy`\" pulumi-lang-yaml=\"`sendgrid.WebhookSecurityPolicy`\" pulumi-lang-java=\"`sendgrid.WebhookSecurityPolicy`\"\u003e`sendgrid.WebhookSecurityPolicy`\u003c/span\u003e resource for more details."
+                }
+            },
+            "required": [
+                "hostname",
+                "url"
+            ],
+            "inputProperties": {
+                "hostname": {
+                    "type": "string",
+                    "description": "A specific and unique domain or subdomain that you have created to use exclusively to parse your incoming email. For example, parse.yourdomain.com.",
+                    "willReplaceOnChanges": true
+                },
+                "sendRaw": {
+                    "type": "boolean",
+                    "description": "Indicates if you would like SendGrid to post the original MIME-type content of your parsed email. When this parameter is set to \"true\", SendGrid will send a JSON payload of the content of your email."
+                },
+                "spamCheck": {
+                    "type": "boolean",
+                    "description": "Indicates if you would like SendGrid to check the content parsed from your emails for spam before POSTing them to your domain."
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The public URL where you would like SendGrid to POST the data parsed from your email. Any emails sent with the given hostname provided (whose MX records have been updated to point to SendGrid) will be parsed and POSTed to this URL.",
+                    "willReplaceOnChanges": true
+                },
+                "webhookSecurityPolicyId": {
+                    "type": "string",
+                    "description": "The ID of the webhook security policy to apply to this parse webhook. See the \u003cspan pulumi-lang-nodejs=\"`sendgrid.WebhookSecurityPolicy`\" pulumi-lang-dotnet=\"`sendgrid.WebhookSecurityPolicy`\" pulumi-lang-go=\"`WebhookSecurityPolicy`\" pulumi-lang-python=\"`WebhookSecurityPolicy`\" pulumi-lang-yaml=\"`sendgrid.WebhookSecurityPolicy`\" pulumi-lang-java=\"`sendgrid.WebhookSecurityPolicy`\"\u003e`sendgrid.WebhookSecurityPolicy`\u003c/span\u003e resource for more details."
+                }
+            },
+            "requiredInputs": [
+                "hostname",
+                "url"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ParseWebhook resources.\n",
+                "properties": {
+                    "hostname": {
+                        "type": "string",
+                        "description": "A specific and unique domain or subdomain that you have created to use exclusively to parse your incoming email. For example, parse.yourdomain.com.",
+                        "willReplaceOnChanges": true
+                    },
+                    "sendRaw": {
+                        "type": "boolean",
+                        "description": "Indicates if you would like SendGrid to post the original MIME-type content of your parsed email. When this parameter is set to \"true\", SendGrid will send a JSON payload of the content of your email."
+                    },
+                    "spamCheck": {
+                        "type": "boolean",
+                        "description": "Indicates if you would like SendGrid to check the content parsed from your emails for spam before POSTing them to your domain."
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "The public URL where you would like SendGrid to POST the data parsed from your email. Any emails sent with the given hostname provided (whose MX records have been updated to point to SendGrid) will be parsed and POSTed to this URL.",
+                        "willReplaceOnChanges": true
+                    },
+                    "webhookSecurityPolicyId": {
+                        "type": "string",
+                        "description": "The ID of the webhook security policy to apply to this parse webhook. See the \u003cspan pulumi-lang-nodejs=\"`sendgrid.WebhookSecurityPolicy`\" pulumi-lang-dotnet=\"`sendgrid.WebhookSecurityPolicy`\" pulumi-lang-go=\"`WebhookSecurityPolicy`\" pulumi-lang-python=\"`WebhookSecurityPolicy`\" pulumi-lang-yaml=\"`sendgrid.WebhookSecurityPolicy`\" pulumi-lang-java=\"`sendgrid.WebhookSecurityPolicy`\"\u003e`sendgrid.WebhookSecurityPolicy`\u003c/span\u003e resource for more details."
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sendgrid:index/ssoCertificate:SsoCertificate": {
+            "properties": {
+                "integrationId": {
+                    "type": "string",
+                    "description": "An ID that matches an existing SSO integration."
+                },
+                "publicCertificate": {
+                    "type": "string",
+                    "description": "This public certificate allows SendGrid to verify that\n\t\t\t\t\tSAML requests it receives are signed by an IdP that it recognizes."
+                }
+            },
+            "required": [
+                "integrationId",
+                "publicCertificate"
+            ],
+            "inputProperties": {
+                "integrationId": {
+                    "type": "string",
+                    "description": "An ID that matches an existing SSO integration."
+                },
+                "publicCertificate": {
+                    "type": "string",
+                    "description": "This public certificate allows SendGrid to verify that\n\t\t\t\t\tSAML requests it receives are signed by an IdP that it recognizes."
+                }
+            },
+            "requiredInputs": [
+                "integrationId",
+                "publicCertificate"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SsoCertificate resources.\n",
+                "properties": {
+                    "integrationId": {
+                        "type": "string",
+                        "description": "An ID that matches an existing SSO integration."
+                    },
+                    "publicCertificate": {
+                        "type": "string",
+                        "description": "This public certificate allows SendGrid to verify that\n\t\t\t\t\tSAML requests it receives are signed by an IdP that it recognizes."
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sendgrid:index/ssoIntegration:SsoIntegration": {
+            "properties": {
+                "audienceUrl": {
+                    "type": "string",
+                    "description": "The URL where your IdP should POST its SAML response.\n\t\t\t\t\tThis is the Twilio SendGrid URL that is responsible for receiving and parsing a SAML assertion.\n\t\t\t\t\tThis is the same URL as the Single Sign-On URL when using SendGrid."
+                },
+                "completedIntegration": {
+                    "type": "boolean",
+                    "description": "Indicates if the integration is complete."
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Indicates if the integration is enabled."
+                },
+                "entityId": {
+                    "type": "string",
+                    "description": "An identifier provided by your IdP to identify Twilio SendGrid in the SAML interaction.\n\t\t\t\t\tThis is called the 'SAML Issuer ID' in the Twilio SendGrid UI."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the integration."
+                },
+                "signinUrl": {
+                    "type": "string",
+                    "description": "The IdP's SAML POST endpoint. This endpoint should receive requests\n\t\t\t\t\tand initiate an SSO login flow. This is called the 'Embed Link' in the Twilio SendGrid UI."
+                },
+                "signoutUrl": {
+                    "type": "string",
+                    "description": "This URL is relevant only for an IdP-initiated authentication flow.\n\t\t\t\t\tIf a user authenticates from their IdP, this URL will return them to their IdP when logging out."
+                },
+                "singleSignonUrl": {
+                    "type": "string",
+                    "description": "The URL where your IdP should POST its SAML response.\n\t\t\t\t\tThis is the Twilio SendGrid URL that is responsible for receiving and parsing a SAML assertion.\n\t\t\t\t\tThis is the same URL as the Audience URL when using SendGrid."
+                }
+            },
+            "required": [
+                "audienceUrl",
+                "completedIntegration",
+                "enabled",
+                "name",
+                "singleSignonUrl"
+            ],
+            "inputProperties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Indicates if the integration is enabled."
+                },
+                "entityId": {
+                    "type": "string",
+                    "description": "An identifier provided by your IdP to identify Twilio SendGrid in the SAML interaction.\n\t\t\t\t\tThis is called the 'SAML Issuer ID' in the Twilio SendGrid UI."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the integration."
+                },
+                "signinUrl": {
+                    "type": "string",
+                    "description": "The IdP's SAML POST endpoint. This endpoint should receive requests\n\t\t\t\t\tand initiate an SSO login flow. This is called the 'Embed Link' in the Twilio SendGrid UI."
+                },
+                "signoutUrl": {
+                    "type": "string",
+                    "description": "This URL is relevant only for an IdP-initiated authentication flow.\n\t\t\t\t\tIf a user authenticates from their IdP, this URL will return them to their IdP when logging out."
+                }
+            },
+            "requiredInputs": [
+                "enabled"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SsoIntegration resources.\n",
+                "properties": {
+                    "audienceUrl": {
+                        "type": "string",
+                        "description": "The URL where your IdP should POST its SAML response.\n\t\t\t\t\tThis is the Twilio SendGrid URL that is responsible for receiving and parsing a SAML assertion.\n\t\t\t\t\tThis is the same URL as the Single Sign-On URL when using SendGrid."
+                    },
+                    "completedIntegration": {
+                        "type": "boolean",
+                        "description": "Indicates if the integration is complete."
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Indicates if the integration is enabled."
+                    },
+                    "entityId": {
+                        "type": "string",
+                        "description": "An identifier provided by your IdP to identify Twilio SendGrid in the SAML interaction.\n\t\t\t\t\tThis is called the 'SAML Issuer ID' in the Twilio SendGrid UI."
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the integration."
+                    },
+                    "signinUrl": {
+                        "type": "string",
+                        "description": "The IdP's SAML POST endpoint. This endpoint should receive requests\n\t\t\t\t\tand initiate an SSO login flow. This is called the 'Embed Link' in the Twilio SendGrid UI."
+                    },
+                    "signoutUrl": {
+                        "type": "string",
+                        "description": "This URL is relevant only for an IdP-initiated authentication flow.\n\t\t\t\t\tIf a user authenticates from their IdP, this URL will return them to their IdP when logging out."
+                    },
+                    "singleSignonUrl": {
+                        "type": "string",
+                        "description": "The URL where your IdP should POST its SAML response.\n\t\t\t\t\tThis is the Twilio SendGrid URL that is responsible for receiving and parsing a SAML assertion.\n\t\t\t\t\tThis is the same URL as the Audience URL when using SendGrid."
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sendgrid:index/subuser:Subuser": {
+            "properties": {
+                "authorizationToken": {
+                    "type": "string"
+                },
+                "creditAllocationType": {
+                    "type": "string"
+                },
+                "disabled": {
+                    "type": "boolean"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "The email of the subuser."
+                },
+                "ips": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The IP addresses that should be assigned to this subuser."
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password the subuser will use when logging into SendGrid.",
+                    "secret": true
+                },
+                "signupSessionToken": {
+                    "type": "string"
+                },
+                "userId": {
+                    "type": "integer"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The name of the subuser."
+                }
+            },
+            "required": [
+                "authorizationToken",
+                "creditAllocationType",
+                "disabled",
+                "email",
+                "ips",
+                "password",
+                "signupSessionToken",
+                "userId",
+                "username"
+            ],
+            "inputProperties": {
+                "disabled": {
+                    "type": "boolean"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "The email of the subuser."
+                },
+                "ips": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The IP addresses that should be assigned to this subuser."
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password the subuser will use when logging into SendGrid.",
+                    "secret": true
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The name of the subuser."
+                }
+            },
+            "requiredInputs": [
+                "email",
+                "ips",
+                "password",
+                "username"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Subuser resources.\n",
+                "properties": {
+                    "authorizationToken": {
+                        "type": "string"
+                    },
+                    "creditAllocationType": {
+                        "type": "string"
+                    },
+                    "disabled": {
+                        "type": "boolean"
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "The email of the subuser."
+                    },
+                    "ips": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The IP addresses that should be assigned to this subuser."
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "The password the subuser will use when logging into SendGrid.",
+                        "secret": true
+                    },
+                    "signupSessionToken": {
+                        "type": "string"
+                    },
+                    "userId": {
+                        "type": "integer"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "The name of the subuser."
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sendgrid:index/teammate:Teammate": {
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "The email address of the teammate. This will be used as the teammate's login."
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "The first name of the teammate. Required for SSO users."
+                },
+                "isAdmin": {
+                    "type": "boolean",
+                    "description": "Whether the teammate should have admin privileges. Admin teammates have full access to the account and don't need specific scopes."
+                },
+                "isSso": {
+                    "type": "boolean",
+                    "description": "Whether this is a Single Sign-On (SSO) user. SSO users require\u003cspan pulumi-lang-nodejs=\" firstName \" pulumi-lang-dotnet=\" FirstName \" pulumi-lang-go=\" firstName \" pulumi-lang-python=\" first_name \" pulumi-lang-yaml=\" firstName \" pulumi-lang-java=\" firstName \"\u003e firstName \u003c/span\u003eand last_name."
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "The last name of the teammate. Required for SSO users."
+                },
+                "scopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of permission scopes for the teammate. Ignored if\u003cspan pulumi-lang-nodejs=\" isAdmin \" pulumi-lang-dotnet=\" IsAdmin \" pulumi-lang-go=\" isAdmin \" pulumi-lang-python=\" is_admin \" pulumi-lang-yaml=\" isAdmin \" pulumi-lang-java=\" isAdmin \"\u003e isAdmin \u003c/span\u003eis true. Cannot include '2fa_exempt' or '2fa_required' as these are managed automatically by SendGrid. See SendGrid API documentation for available scopes."
+                },
+                "userStatus": {
+                    "type": "string",
+                    "description": "The status of the user: 'active' for confirmed users, 'pending' for users who haven't accepted their invitation yet."
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username for the teammate. If not provided, the email will be used."
+                }
+            },
+            "required": [
+                "email",
+                "isAdmin",
+                "isSso",
+                "userStatus"
+            ],
+            "inputProperties": {
+                "email": {
+                    "type": "string",
+                    "description": "The email address of the teammate. This will be used as the teammate's login."
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "The first name of the teammate. Required for SSO users."
+                },
+                "isAdmin": {
+                    "type": "boolean",
+                    "description": "Whether the teammate should have admin privileges. Admin teammates have full access to the account and don't need specific scopes."
+                },
+                "isSso": {
+                    "type": "boolean",
+                    "description": "Whether this is a Single Sign-On (SSO) user. SSO users require\u003cspan pulumi-lang-nodejs=\" firstName \" pulumi-lang-dotnet=\" FirstName \" pulumi-lang-go=\" firstName \" pulumi-lang-python=\" first_name \" pulumi-lang-yaml=\" firstName \" pulumi-lang-java=\" firstName \"\u003e firstName \u003c/span\u003eand last_name."
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "The last name of the teammate. Required for SSO users."
+                },
+                "scopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of permission scopes for the teammate. Ignored if\u003cspan pulumi-lang-nodejs=\" isAdmin \" pulumi-lang-dotnet=\" IsAdmin \" pulumi-lang-go=\" isAdmin \" pulumi-lang-python=\" is_admin \" pulumi-lang-yaml=\" isAdmin \" pulumi-lang-java=\" isAdmin \"\u003e isAdmin \u003c/span\u003eis true. Cannot include '2fa_exempt' or '2fa_required' as these are managed automatically by SendGrid. See SendGrid API documentation for available scopes."
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username for the teammate. If not provided, the email will be used."
+                }
+            },
+            "requiredInputs": [
+                "email",
+                "isAdmin",
+                "isSso"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Teammate resources.\n",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "The email address of the teammate. This will be used as the teammate's login."
+                    },
+                    "firstName": {
+                        "type": "string",
+                        "description": "The first name of the teammate. Required for SSO users."
+                    },
+                    "isAdmin": {
+                        "type": "boolean",
+                        "description": "Whether the teammate should have admin privileges. Admin teammates have full access to the account and don't need specific scopes."
+                    },
+                    "isSso": {
+                        "type": "boolean",
+                        "description": "Whether this is a Single Sign-On (SSO) user. SSO users require\u003cspan pulumi-lang-nodejs=\" firstName \" pulumi-lang-dotnet=\" FirstName \" pulumi-lang-go=\" firstName \" pulumi-lang-python=\" first_name \" pulumi-lang-yaml=\" firstName \" pulumi-lang-java=\" firstName \"\u003e firstName \u003c/span\u003eand last_name."
+                    },
+                    "lastName": {
+                        "type": "string",
+                        "description": "The last name of the teammate. Required for SSO users."
+                    },
+                    "scopes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of permission scopes for the teammate. Ignored if\u003cspan pulumi-lang-nodejs=\" isAdmin \" pulumi-lang-dotnet=\" IsAdmin \" pulumi-lang-go=\" isAdmin \" pulumi-lang-python=\" is_admin \" pulumi-lang-yaml=\" isAdmin \" pulumi-lang-java=\" isAdmin \"\u003e isAdmin \u003c/span\u003eis true. Cannot include '2fa_exempt' or '2fa_required' as these are managed automatically by SendGrid. See SendGrid API documentation for available scopes."
+                    },
+                    "userStatus": {
+                        "type": "string",
+                        "description": "The status of the user: 'active' for confirmed users, 'pending' for users who haven't accepted their invitation yet."
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "The username for the teammate. If not provided, the email will be used."
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sendgrid:index/template:Template": {
+            "properties": {
+                "generation": {
+                    "type": "string",
+                    "description": "Defines the generation of the template, allowed values: legacy, dynamic (default)."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the template, max length: 100."
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "The date and time of the last update of this template."
+                }
+            },
+            "required": [
+                "name",
+                "updatedAt"
+            ],
+            "inputProperties": {
+                "generation": {
+                    "type": "string",
+                    "description": "Defines the generation of the template, allowed values: legacy, dynamic (default).",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the template, max length: 100."
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Template resources.\n",
+                "properties": {
+                    "generation": {
+                        "type": "string",
+                        "description": "Defines the generation of the template, allowed values: legacy, dynamic (default).",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the template, max length: 100."
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "The date and time of the last update of this template."
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sendgrid:index/templateVersion:TemplateVersion": {
+            "properties": {
+                "active": {
+                    "type": "integer",
+                    "description": "Set the version as the active version associated with the template. Only one version of a template can be active. The first version created for a template will automatically be set to Active. Allowed values: 0, 1."
+                },
+                "editor": {
+                    "type": "string",
+                    "description": "The editor used in the UI, allowed values: code (default), design."
+                },
+                "generatePlainContent": {
+                    "type": "boolean",
+                    "description": "If true (default),\u003cspan pulumi-lang-nodejs=\" plainContent \" pulumi-lang-dotnet=\" PlainContent \" pulumi-lang-go=\" plainContent \" pulumi-lang-python=\" plain_content \" pulumi-lang-yaml=\" plainContent \" pulumi-lang-java=\" plainContent \"\u003e plainContent \u003c/span\u003eis always generated from html_content. If false,\u003cspan pulumi-lang-nodejs=\" plainContent \" pulumi-lang-dotnet=\" PlainContent \" pulumi-lang-go=\" plainContent \" pulumi-lang-python=\" plain_content \" pulumi-lang-yaml=\" plainContent \" pulumi-lang-java=\" plainContent \"\u003e plainContent \u003c/span\u003eis not altered."
+                },
+                "htmlContent": {
+                    "type": "string",
+                    "description": "The HTML content of the version, maximum of 1048576 bytes allowed."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the transactional template version, max length: 100."
+                },
+                "plainContent": {
+                    "type": "string",
+                    "description": "Text/plain content of the transactional template version, maximum of 1048576 bytes allowed."
+                },
+                "subject": {
+                    "type": "string",
+                    "description": "Subject of the new transactional template version, max length: 255."
+                },
+                "templateId": {
+                    "type": "string",
+                    "description": "ID of the transactional template."
+                },
+                "testData": {
+                    "type": "string",
+                    "description": "For dynamic templates only, the mock json data that will be used for template preview and test sends."
+                },
+                "thumbnailUrl": {
+                    "type": "string",
+                    "description": "A thumbnail preview of the template's html content."
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "The date and time that this transactional template version was updated."
+                }
+            },
+            "required": [
+                "name",
+                "plainContent",
+                "subject",
+                "templateId",
+                "thumbnailUrl",
+                "updatedAt"
+            ],
+            "inputProperties": {
+                "active": {
+                    "type": "integer",
+                    "description": "Set the version as the active version associated with the template. Only one version of a template can be active. The first version created for a template will automatically be set to Active. Allowed values: 0, 1."
+                },
+                "editor": {
+                    "type": "string",
+                    "description": "The editor used in the UI, allowed values: code (default), design."
+                },
+                "generatePlainContent": {
+                    "type": "boolean",
+                    "description": "If true (default),\u003cspan pulumi-lang-nodejs=\" plainContent \" pulumi-lang-dotnet=\" PlainContent \" pulumi-lang-go=\" plainContent \" pulumi-lang-python=\" plain_content \" pulumi-lang-yaml=\" plainContent \" pulumi-lang-java=\" plainContent \"\u003e plainContent \u003c/span\u003eis always generated from html_content. If false,\u003cspan pulumi-lang-nodejs=\" plainContent \" pulumi-lang-dotnet=\" PlainContent \" pulumi-lang-go=\" plainContent \" pulumi-lang-python=\" plain_content \" pulumi-lang-yaml=\" plainContent \" pulumi-lang-java=\" plainContent \"\u003e plainContent \u003c/span\u003eis not altered."
+                },
+                "htmlContent": {
+                    "type": "string",
+                    "description": "The HTML content of the version, maximum of 1048576 bytes allowed."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the transactional template version, max length: 100."
+                },
+                "plainContent": {
+                    "type": "string",
+                    "description": "Text/plain content of the transactional template version, maximum of 1048576 bytes allowed."
+                },
+                "subject": {
+                    "type": "string",
+                    "description": "Subject of the new transactional template version, max length: 255."
+                },
+                "templateId": {
+                    "type": "string",
+                    "description": "ID of the transactional template."
+                },
+                "testData": {
+                    "type": "string",
+                    "description": "For dynamic templates only, the mock json data that will be used for template preview and test sends."
+                }
+            },
+            "requiredInputs": [
+                "subject",
+                "templateId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering TemplateVersion resources.\n",
+                "properties": {
+                    "active": {
+                        "type": "integer",
+                        "description": "Set the version as the active version associated with the template. Only one version of a template can be active. The first version created for a template will automatically be set to Active. Allowed values: 0, 1."
+                    },
+                    "editor": {
+                        "type": "string",
+                        "description": "The editor used in the UI, allowed values: code (default), design."
+                    },
+                    "generatePlainContent": {
+                        "type": "boolean",
+                        "description": "If true (default),\u003cspan pulumi-lang-nodejs=\" plainContent \" pulumi-lang-dotnet=\" PlainContent \" pulumi-lang-go=\" plainContent \" pulumi-lang-python=\" plain_content \" pulumi-lang-yaml=\" plainContent \" pulumi-lang-java=\" plainContent \"\u003e plainContent \u003c/span\u003eis always generated from html_content. If false,\u003cspan pulumi-lang-nodejs=\" plainContent \" pulumi-lang-dotnet=\" PlainContent \" pulumi-lang-go=\" plainContent \" pulumi-lang-python=\" plain_content \" pulumi-lang-yaml=\" plainContent \" pulumi-lang-java=\" plainContent \"\u003e plainContent \u003c/span\u003eis not altered."
+                    },
+                    "htmlContent": {
+                        "type": "string",
+                        "description": "The HTML content of the version, maximum of 1048576 bytes allowed."
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the transactional template version, max length: 100."
+                    },
+                    "plainContent": {
+                        "type": "string",
+                        "description": "Text/plain content of the transactional template version, maximum of 1048576 bytes allowed."
+                    },
+                    "subject": {
+                        "type": "string",
+                        "description": "Subject of the new transactional template version, max length: 255."
+                    },
+                    "templateId": {
+                        "type": "string",
+                        "description": "ID of the transactional template."
+                    },
+                    "testData": {
+                        "type": "string",
+                        "description": "For dynamic templates only, the mock json data that will be used for template preview and test sends."
+                    },
+                    "thumbnailUrl": {
+                        "type": "string",
+                        "description": "A thumbnail preview of the template's html content."
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "The date and time that this transactional template version was updated."
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sendgrid:index/unsubscribeGroup:UnsubscribeGroup": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the unsubscribe group"
+                },
+                "isDefault": {
+                    "type": "boolean",
+                    "description": "Should this unsubscribe group be used as the default group?"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name you will use to describe this unsubscribe group."
+                },
+                "unsubscribes": {
+                    "type": "integer",
+                    "description": "The number of unsubscribes that belong to the group."
+                }
+            },
+            "required": [
+                "name",
+                "unsubscribes"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the unsubscribe group"
+                },
+                "isDefault": {
+                    "type": "boolean",
+                    "description": "Should this unsubscribe group be used as the default group?"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name you will use to describe this unsubscribe group."
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering UnsubscribeGroup resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the unsubscribe group"
+                    },
+                    "isDefault": {
+                        "type": "boolean",
+                        "description": "Should this unsubscribe group be used as the default group?"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name you will use to describe this unsubscribe group."
+                    },
+                    "unsubscribes": {
+                        "type": "integer",
+                        "description": "The number of unsubscribes that belong to the group."
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sendgrid:index/webhookSecurityPolicy:WebhookSecurityPolicy": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the webhook security policy."
+                },
+                "oauth": {
+                    "$ref": "#/types/sendgrid:index/WebhookSecurityPolicyOauth:WebhookSecurityPolicyOauth",
+                    "description": "OAuth configuration for webhook authentication. Can be used together with signature."
+                },
+                "signature": {
+                    "$ref": "#/types/sendgrid:index/WebhookSecurityPolicySignature:WebhookSecurityPolicySignature",
+                    "description": "Signature configuration for webhook authentication. Can be used together with oauth."
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the webhook security policy."
+                },
+                "oauth": {
+                    "$ref": "#/types/sendgrid:index/WebhookSecurityPolicyOauth:WebhookSecurityPolicyOauth",
+                    "description": "OAuth configuration for webhook authentication. Can be used together with signature.",
+                    "willReplaceOnChanges": true
+                },
+                "signature": {
+                    "$ref": "#/types/sendgrid:index/WebhookSecurityPolicySignature:WebhookSecurityPolicySignature",
+                    "description": "Signature configuration for webhook authentication. Can be used together with oauth.",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WebhookSecurityPolicy resources.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the webhook security policy."
+                    },
+                    "oauth": {
+                        "$ref": "#/types/sendgrid:index/WebhookSecurityPolicyOauth:WebhookSecurityPolicyOauth",
+                        "description": "OAuth configuration for webhook authentication. Can be used together with signature.",
+                        "willReplaceOnChanges": true
+                    },
+                    "signature": {
+                        "$ref": "#/types/sendgrid:index/WebhookSecurityPolicySignature:WebhookSecurityPolicySignature",
+                        "description": "Signature configuration for webhook authentication. Can be used together with oauth.",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "functions": {
+        "pulumi:providers:sendgrid/terraformConfig": {
+            "description": "This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.",
+            "inputs": {
+                "properties": {
+                    "__self__": {
+                        "type": "ref",
+                        "$ref": "#/provider"
+                    }
+                },
+                "type": "pulumi:providers:sendgrid/terraformConfig",
+                "required": [
+                    "__self__"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "result": {
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "result"
+                ],
+                "type": "object"
+            }
+        },
+        "sendgrid:index/getTeammate:getTeammate": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getTeammate.\n",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "isAdmin": {
+                        "type": "boolean"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    },
+                    "scopes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "userType": {
+                        "type": "string"
+                    },
+                    "username": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getTeammate.\n",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "isAdmin": {
+                        "type": "boolean"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    },
+                    "scopes": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "userType": {
+                        "type": "string"
+                    },
+                    "username": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "sendgrid:index/getTemplate:getTemplate": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getTemplate.\n",
+                "properties": {
+                    "generation": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "templateId": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getTemplate.\n",
+                "properties": {
+                    "generation": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "templateId": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "generation",
+                    "name",
+                    "updatedAt",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "sendgrid:index/getTemplateVersion:getTemplateVersion": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getTemplateVersion.\n",
+                "properties": {
+                    "templateId": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "templateId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getTemplateVersion.\n",
+                "properties": {
+                    "active": {
+                        "type": "integer"
+                    },
+                    "editor": {
+                        "type": "string"
+                    },
+                    "generatePlainContent": {
+                        "type": "boolean"
+                    },
+                    "htmlContent": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "plainContent": {
+                        "type": "string"
+                    },
+                    "subject": {
+                        "type": "string"
+                    },
+                    "templateId": {
+                        "type": "string"
+                    },
+                    "testData": {
+                        "type": "string"
+                    },
+                    "thumbnailUrl": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "active",
+                    "editor",
+                    "generatePlainContent",
+                    "htmlContent",
+                    "name",
+                    "plainContent",
+                    "subject",
+                    "templateId",
+                    "testData",
+                    "thumbnailUrl",
+                    "updatedAt",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "sendgrid:index/getUnsubscribeGroup:getUnsubscribeGroup": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getUnsubscribeGroup.\n",
+                "properties": {
+                    "groupId": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getUnsubscribeGroup.\n",
+                "properties": {
+                    "description": {
+                        "type": "string"
+                    },
+                    "groupId": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "isDefault": {
+                        "type": "boolean"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "unsubscribes": {
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "description",
+                    "isDefault",
+                    "unsubscribes",
+                    "id"
+                ],
+                "type": "object"
+            }
+        }
+    }
+}
