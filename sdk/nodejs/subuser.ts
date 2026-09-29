@@ -47,6 +47,10 @@ export class Subuser extends pulumi.CustomResource {
      * The password the subuser will use when logging into SendGrid.
      */
     declare public readonly password: pulumi.Output<string>;
+    /**
+     * The region to assign the subuser to, either 'global' or 'eu'. Defaults to 'global' on the SendGrid side. Cannot be changed after creation.
+     */
+    declare public readonly region: pulumi.Output<string>;
     declare public /*out*/ readonly signupSessionToken: pulumi.Output<string>;
     declare public /*out*/ readonly userId: pulumi.Output<number>;
     /**
@@ -73,6 +77,7 @@ export class Subuser extends pulumi.CustomResource {
             resourceInputs["email"] = state?.email;
             resourceInputs["ips"] = state?.ips;
             resourceInputs["password"] = state?.password;
+            resourceInputs["region"] = state?.region;
             resourceInputs["signupSessionToken"] = state?.signupSessionToken;
             resourceInputs["userId"] = state?.userId;
             resourceInputs["username"] = state?.username;
@@ -94,6 +99,7 @@ export class Subuser extends pulumi.CustomResource {
             resourceInputs["email"] = args?.email;
             resourceInputs["ips"] = args?.ips;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
+            resourceInputs["region"] = args?.region;
             resourceInputs["username"] = args?.username;
             resourceInputs["authorizationToken"] = undefined /*out*/;
             resourceInputs["creditAllocationType"] = undefined /*out*/;
@@ -126,6 +132,10 @@ export interface SubuserState {
      * The password the subuser will use when logging into SendGrid.
      */
     password?: pulumi.Input<string | undefined>;
+    /**
+     * The region to assign the subuser to, either 'global' or 'eu'. Defaults to 'global' on the SendGrid side. Cannot be changed after creation.
+     */
+    region?: pulumi.Input<string | undefined>;
     signupSessionToken?: pulumi.Input<string | undefined>;
     userId?: pulumi.Input<number | undefined>;
     /**
@@ -151,6 +161,10 @@ export interface SubuserArgs {
      * The password the subuser will use when logging into SendGrid.
      */
     password: pulumi.Input<string>;
+    /**
+     * The region to assign the subuser to, either 'global' or 'eu'. Defaults to 'global' on the SendGrid side. Cannot be changed after creation.
+     */
+    region?: pulumi.Input<string | undefined>;
     /**
      * The name of the subuser.
      */

@@ -43,6 +43,21 @@ export interface LinkBrandingDn {
     valid?: pulumi.Input<boolean | undefined>;
 }
 
+export interface TeammateSubuserAccess {
+    /**
+     * Numeric subuser account ID.
+     */
+    id: pulumi.Input<number>;
+    /**
+     * Permission level for this subuser: "admin" (full access) or "restricted" (limited to scopes). Per the SendGrid API these are the only two values.
+     */
+    permissionType: pulumi.Input<string>;
+    /**
+     * Scopes granted on this subuser. Required when permissionType is "restricted"; ignored for "admin".
+     */
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
 export interface WebhookSecurityPolicyOauth {
     /**
      * The OAuth client ID.
