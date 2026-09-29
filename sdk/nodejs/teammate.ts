@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export class Teammate extends pulumi.CustomResource {
@@ -53,9 +55,13 @@ export class Teammate extends pulumi.CustomResource {
      */
     declare public readonly lastName: pulumi.Output<string | undefined>;
     /**
-     * List of permission scopes for the teammate. Ignored if isAdmin is true. Cannot include '2fa_exempt' or '2fa_required' as these are managed automatically by SendGrid. See SendGrid API documentation for available scopes.
+     * List of permission scopes for the teammate. Ignored if isAdmin is true. Cannot include '2fa_exempt' or '2fa_required' as these are managed automatically by SendGrid. This attribute is also computed: leaving it unset keeps whatever scopes the teammate currently has on the server instead of clearing them, and it must be left unset for a teammate with subuser_access, because SendGrid refuses root scopes for those teammates. See SendGrid API documentation for available scopes.
      */
-    declare public readonly scopes: pulumi.Output<string[] | undefined>;
+    declare public readonly scopes: pulumi.Output<string[]>;
+    /**
+     * Subuser permission grants for this SSO teammate. Only applies when `isSso = true`. Setting at least one block sets `hasRestrictedSubuserAccess = true` on the API. This attribute is also computed: when no block is managed it reflects the teammate's current server-side access without producing a diff, and removing all blocks falls back to that server value rather than clearing access (Terraform does not clobber access it does not manage).
+     */
+    declare public readonly subuserAccesses: pulumi.Output<outputs.TeammateSubuserAccess[]>;
     /**
      * The status of the user: 'active' for confirmed users, 'pending' for users who haven't accepted their invitation yet.
      */
@@ -84,6 +90,7 @@ export class Teammate extends pulumi.CustomResource {
             resourceInputs["isSso"] = state?.isSso;
             resourceInputs["lastName"] = state?.lastName;
             resourceInputs["scopes"] = state?.scopes;
+            resourceInputs["subuserAccesses"] = state?.subuserAccesses;
             resourceInputs["userStatus"] = state?.userStatus;
             resourceInputs["username"] = state?.username;
         } else {
@@ -103,6 +110,7 @@ export class Teammate extends pulumi.CustomResource {
             resourceInputs["isSso"] = args?.isSso;
             resourceInputs["lastName"] = args?.lastName;
             resourceInputs["scopes"] = args?.scopes;
+            resourceInputs["subuserAccesses"] = args?.subuserAccesses;
             resourceInputs["username"] = args?.username;
             resourceInputs["userStatus"] = undefined /*out*/;
         }
@@ -136,9 +144,13 @@ export interface TeammateState {
      */
     lastName?: pulumi.Input<string | undefined>;
     /**
-     * List of permission scopes for the teammate. Ignored if isAdmin is true. Cannot include '2fa_exempt' or '2fa_required' as these are managed automatically by SendGrid. See SendGrid API documentation for available scopes.
+     * List of permission scopes for the teammate. Ignored if isAdmin is true. Cannot include '2fa_exempt' or '2fa_required' as these are managed automatically by SendGrid. This attribute is also computed: leaving it unset keeps whatever scopes the teammate currently has on the server instead of clearing them, and it must be left unset for a teammate with subuser_access, because SendGrid refuses root scopes for those teammates. See SendGrid API documentation for available scopes.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Subuser permission grants for this SSO teammate. Only applies when `isSso = true`. Setting at least one block sets `hasRestrictedSubuserAccess = true` on the API. This attribute is also computed: when no block is managed it reflects the teammate's current server-side access without producing a diff, and removing all blocks falls back to that server value rather than clearing access (Terraform does not clobber access it does not manage).
+     */
+    subuserAccesses?: pulumi.Input<pulumi.Input<inputs.TeammateSubuserAccess>[] | undefined>;
     /**
      * The status of the user: 'active' for confirmed users, 'pending' for users who haven't accepted their invitation yet.
      */
@@ -174,9 +186,13 @@ export interface TeammateArgs {
      */
     lastName?: pulumi.Input<string | undefined>;
     /**
-     * List of permission scopes for the teammate. Ignored if isAdmin is true. Cannot include '2fa_exempt' or '2fa_required' as these are managed automatically by SendGrid. See SendGrid API documentation for available scopes.
+     * List of permission scopes for the teammate. Ignored if isAdmin is true. Cannot include '2fa_exempt' or '2fa_required' as these are managed automatically by SendGrid. This attribute is also computed: leaving it unset keeps whatever scopes the teammate currently has on the server instead of clearing them, and it must be left unset for a teammate with subuser_access, because SendGrid refuses root scopes for those teammates. See SendGrid API documentation for available scopes.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Subuser permission grants for this SSO teammate. Only applies when `isSso = true`. Setting at least one block sets `hasRestrictedSubuserAccess = true` on the API. This attribute is also computed: when no block is managed it reflects the teammate's current server-side access without producing a diff, and removing all blocks falls back to that server value rather than clearing access (Terraform does not clobber access it does not manage).
+     */
+    subuserAccesses?: pulumi.Input<pulumi.Input<inputs.TeammateSubuserAccess>[] | undefined>;
     /**
      * The username for the teammate. If not provided, the email will be used.
      */

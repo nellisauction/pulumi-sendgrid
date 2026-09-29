@@ -56,6 +56,16 @@
                 "fields": {
                     "scopes": {
                         "maxItemsOne": false
+                    },
+                    "subuser_access": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "scopes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },

@@ -43,6 +43,21 @@ export interface LinkBrandingDn {
     valid: boolean;
 }
 
+export interface TeammateSubuserAccess {
+    /**
+     * Numeric subuser account ID.
+     */
+    id: number;
+    /**
+     * Permission level for this subuser: "admin" (full access) or "restricted" (limited to scopes). Per the SendGrid API these are the only two values.
+     */
+    permissionType: string;
+    /**
+     * Scopes granted on this subuser. Required when permissionType is "restricted"; ignored for "admin".
+     */
+    scopes?: string[];
+}
+
 export interface WebhookSecurityPolicyOauth {
     /**
      * The OAuth client ID.
