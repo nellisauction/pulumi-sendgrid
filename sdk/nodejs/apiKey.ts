@@ -4,6 +4,40 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sendgrid from "@nellisauction/pulumi-sendgrid";
+ *
+ * // Basic API key with common permissions
+ * const basic = new sendgrid.ApiKey("basic", {
+ *     name: "my-app-api-key",
+ *     scopes: [
+ *         "mail.send",
+ *         "sender_verification_eligible",
+ *     ],
+ * });
+ * export const apiKey = basic.apiKey;
+ * ```
+ *
+ * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
+ *
+ * !/bin/bash
+ *
+ * Import an existing API key using its ID
+ * Replace 'SG.example_api_key_id' with your actual API key ID
+ *
+ * ```sh
+ * $ pulumi import sendgrid:index/apiKey:ApiKey basic SG.example_api_key_id
+ * ```
+ *
+ * You can find API key IDs in the SendGrid dashboard under Settings > API Keys
+ * Or use the SendGrid API to list existing keys
+ */
 export class ApiKey extends pulumi.CustomResource {
     /**
      * Get an existing ApiKey resource's state with the given name, ID, and optional extra

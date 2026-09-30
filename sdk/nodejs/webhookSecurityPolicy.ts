@@ -6,6 +6,84 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a SendGrid webhook security policy. Security policies provide authentication mechanisms for webhooks, including OAuth and signature verification.
+ *
+ * **Important Notes:**
+ *
+ * - You must configure at least one authentication method: `oauth`, `signature`, or both
+ * - OAuth configuration requires client credentials and token URL
+ * - Signature verification generates a public key that can be used to verify webhook payloads
+ * - Security policies can be attached to parse webhooks via the `webhookSecurityPolicyId` field
+ * - Changing `oauth` or `signature` configuration will force recreation of the resource
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sendgrid from "@nellisauction/pulumi-sendgrid";
+ *
+ * // OAuth (OIDC) only security policy
+ * const oauthOnly = new sendgrid.WebhookSecurityPolicy("oauth_only", {
+ *     name: "OAuth Policy",
+ *     oauth: {
+ *         clientId: "my-client-id",
+ *         clientSecret: "my-client-secret",
+ *         tokenUrl: "https://oauth.example.com/token",
+ *         scopes: [
+ *             "webhooks:read",
+ *             "webhooks:write",
+ *         ],
+ *     },
+ * });
+ * // Signature verification only security policy
+ * const signatureOnly = new sendgrid.WebhookSecurityPolicy("signature_only", {
+ *     name: "Signature Verification Policy",
+ *     signature: {
+ *         enabled: true,
+ *     },
+ * });
+ * export const publicKey = signatureOnly.signature.apply(signature => signature?.publicKey);
+ * // Combined OAuth and Signature security policy
+ * const both = new sendgrid.WebhookSecurityPolicy("both", {
+ *     name: "Combined Security Policy",
+ *     oauth: {
+ *         clientId: "my-client-id",
+ *         clientSecret: "my-client-secret",
+ *         tokenUrl: "https://oauth.example.com/token",
+ *         scopes: [
+ *             "webhooks:read",
+ *             "webhooks:write",
+ *         ],
+ *     },
+ *     signature: {
+ *         enabled: true,
+ *     },
+ * });
+ * // Attached to Parse Webhook
+ * const parseSecurity = new sendgrid.WebhookSecurityPolicy("parse_security", {
+ *     name: "Parse Webhook Security",
+ *     signature: {
+ *         enabled: true,
+ *     },
+ * });
+ * const example = new sendgrid.ParseWebhook("example", {
+ *     hostname: "parse.example.com",
+ *     url: "https://api.example.com/parse",
+ *     spamCheck: true,
+ *     sendRaw: false,
+ *     webhookSecurityPolicyId: parseSecurity.id,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Import existing webhook security policy by ID
+ *
+ * ```sh
+ * $ pulumi import sendgrid:index/webhookSecurityPolicy:WebhookSecurityPolicy example policy_id_here
+ * ```
+ */
 export class WebhookSecurityPolicy extends pulumi.CustomResource {
     /**
      * Get an existing WebhookSecurityPolicy resource's state with the given name, ID, and optional extra

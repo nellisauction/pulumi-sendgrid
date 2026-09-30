@@ -15,6 +15,9 @@ export function getTemplateVersion(args: GetTemplateVersionArgs, opts?: pulumi.I
  * A collection of arguments for invoking getTemplateVersion.
  */
 export interface GetTemplateVersionArgs {
+    /**
+     * ID of the transactional template.
+     */
     templateId: string;
 }
 
@@ -22,20 +25,53 @@ export interface GetTemplateVersionArgs {
  * A collection of values returned by getTemplateVersion.
  */
 export interface GetTemplateVersionResult {
+    /**
+     * Set the version as the active version associated with the template. Only one version of a template can be active. The first version created for a template will automatically be set to Active. Allowed values: 0, 1.
+     */
     readonly active: number;
+    /**
+     * The editor used in the UI, allowed values: code (default), design.
+     */
     readonly editor: string;
+    /**
+     * If true (default), plain*content is always generated from html*content. If false, plainContent is not altered.
+     */
     readonly generatePlainContent: boolean;
+    /**
+     * The HTML content of the version, maximum of 1048576 bytes allowed.
+     */
     readonly htmlContent: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Name of the transactional template version, max length: 100.
+     */
     readonly name: string;
+    /**
+     * Text/plain content of the transactional template version, maximum of 1048576 bytes allowed.
+     */
     readonly plainContent: string;
+    /**
+     * Subject of the new transactional template version, max length: 255.
+     */
     readonly subject: string;
+    /**
+     * ID of the transactional template.
+     */
     readonly templateId: string;
+    /**
+     * For dynamic templates only, the mock json data that will be used for template preview and test sends.
+     */
     readonly testData: string;
+    /**
+     * A thumbnail preview of the template's html content.
+     */
     readonly thumbnailUrl: string;
+    /**
+     * The date and time that this transactional template version was updated.
+     */
     readonly updatedAt: string;
 }
 export function getTemplateVersionOutput(args: GetTemplateVersionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTemplateVersionResult> {
@@ -49,5 +85,8 @@ export function getTemplateVersionOutput(args: GetTemplateVersionOutputArgs, opt
  * A collection of arguments for invoking getTemplateVersion.
  */
 export interface GetTemplateVersionOutputArgs {
+    /**
+     * ID of the transactional template.
+     */
     templateId: pulumi.Input<string>;
 }

@@ -19,7 +19,13 @@ export function getTemplate(args?: GetTemplateArgs, opts?: pulumi.InvokeOptions)
  */
 export interface GetTemplateArgs {
     generation?: string;
+    /**
+     * The name of the template to retrieve
+     */
     name?: string;
+    /**
+     * The ID of the template to retrieve
+     */
     templateId?: string;
 }
 
@@ -32,8 +38,17 @@ export interface GetTemplateResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The name of the template to retrieve
+     */
     readonly name: string;
+    /**
+     * The ID of the template to retrieve
+     */
     readonly templateId?: string;
+    /**
+     * The date and time of the last update of this template.
+     */
     readonly updatedAt: string;
 }
 export function getTemplateOutput(args?: GetTemplateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTemplateResult> {
@@ -51,6 +66,12 @@ export function getTemplateOutput(args?: GetTemplateOutputArgs, opts?: pulumi.In
  */
 export interface GetTemplateOutputArgs {
     generation?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the template to retrieve
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the template to retrieve
+     */
     templateId?: pulumi.Input<string | undefined>;
 }

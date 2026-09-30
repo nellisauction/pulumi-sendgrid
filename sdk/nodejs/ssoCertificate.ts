@@ -4,6 +4,23 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
+ *
+ * !/bin/bash
+ *
+ * Import SSO certificate using its ID
+ *
+ * ```sh
+ * $ pulumi import sendgrid:index/ssoCertificate:SsoCertificate okta_cert cert-1234-5678
+ * ```
+ *
+ * Find certificate IDs in SendGrid dashboard under Settings > SSO > Certificates
+ */
 export class SsoCertificate extends pulumi.CustomResource {
     /**
      * Get an existing SsoCertificate resource's state with the given name, ID, and optional extra
@@ -38,7 +55,7 @@ export class SsoCertificate extends pulumi.CustomResource {
     declare public readonly integrationId: pulumi.Output<string>;
     /**
      * This public certificate allows SendGrid to verify that
-     * 					SAML requests it receives are signed by an IdP that it recognizes.
+     * 				SAML requests it receives are signed by an IdP that it recognizes.
      */
     declare public readonly publicCertificate: pulumi.Output<string>;
 
@@ -83,7 +100,7 @@ export interface SsoCertificateState {
     integrationId?: pulumi.Input<string | undefined>;
     /**
      * This public certificate allows SendGrid to verify that
-     * 					SAML requests it receives are signed by an IdP that it recognizes.
+     * 				SAML requests it receives are signed by an IdP that it recognizes.
      */
     publicCertificate?: pulumi.Input<string | undefined>;
 }
@@ -98,7 +115,7 @@ export interface SsoCertificateArgs {
     integrationId: pulumi.Input<string>;
     /**
      * This public certificate allows SendGrid to verify that
-     * 					SAML requests it receives are signed by an IdP that it recognizes.
+     * 				SAML requests it receives are signed by an IdP that it recognizes.
      */
     publicCertificate: pulumi.Input<string>;
 }

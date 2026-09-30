@@ -4,6 +4,49 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sendgrid from "@nellisauction/pulumi-sendgrid";
+ *
+ * // Default unsubscribe group for general emails
+ * const general = new sendgrid.UnsubscribeGroup("general", {
+ *     name: "General Communications",
+ *     description: "General company communications and updates",
+ *     isDefault: true,
+ * });
+ * // Marketing emails unsubscribe group
+ * const marketing = new sendgrid.UnsubscribeGroup("marketing", {
+ *     name: "Marketing Emails",
+ *     description: "Promotional offers, newsletters, and marketing content",
+ *     isDefault: false,
+ * });
+ * // Transactional emails unsubscribe group
+ * const transactional = new sendgrid.UnsubscribeGroup("transactional", {
+ *     name: "Account Notifications",
+ *     description: "Account-related notifications and alerts",
+ *     isDefault: false,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
+ *
+ * !/bin/bash
+ *
+ * Import an existing unsubscribe group using its ID
+ * Replace '12345' with your actual unsubscribe group ID
+ *
+ * ```sh
+ * $ pulumi import sendgrid:index/unsubscribeGroup:UnsubscribeGroup general 12345
+ * ```
+ *
+ * You can find unsubscribe group IDs in the SendGrid dashboard under Settings > Unsubscribe Groups
+ * Or use the SendGrid API to list existing groups
+ */
 export class UnsubscribeGroup extends pulumi.CustomResource {
     /**
      * Get an existing UnsubscribeGroup resource's state with the given name, ID, and optional extra

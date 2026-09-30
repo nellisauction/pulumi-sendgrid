@@ -4,6 +4,64 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sendgrid from "@nellisauction/pulumi-sendgrid";
+ *
+ * // Create a template first
+ * const welcomeEmail = new sendgrid.Template("welcome_email", {
+ *     name: "Welcome Email Template",
+ *     generation: "dynamic",
+ * });
+ * // Basic template version with HTML content
+ * const welcomeV1 = new sendgrid.TemplateVersion("welcome_v1", {
+ *     name: "Welcome Email v1",
+ *     templateId: welcomeEmail.id,
+ *     active: 1,
+ *     subject: "Welcome to {{company_name}}!",
+ *     htmlContent: `<!DOCTYPE html>
+ * <html>
+ * <head>
+ *     <title>Welcome!</title>
+ * </head>
+ * <body>
+ *     <h1>Welcome {{first_name}}!</h1>
+ *     <p>Thank you for joining {{company_name}}. We're excited to have you!</p>
+ *     <p>Best regards,<br>The {{company_name}} Team</p>
+ * </body>
+ * </html>
+ * `,
+ *     generatePlainContent: true,
+ *     editor: "code",
+ *     testData: JSON.stringify({
+ *         first_name: "John",
+ *         company_name: "Acme Corp",
+ *     }),
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
+ *
+ * !/bin/bash
+ *
+ * Import an existing template version using template_id/version_id format
+ * Replace 'd-template-id' with your template ID and 'version-id' with version ID
+ *
+ * ```sh
+ * $ pulumi import sendgrid:index/templateVersion:TemplateVersion welcome_v1 d-template-id/version-id
+ * ```
+ *
+ * Example with actual IDs:
+ * terraform import sendgrid_template_version.welcome_v1 d-123456789/v-987654321
+ *
+ * You can find template and version IDs in the SendGrid dashboard under Email API > Dynamic Templates
+ * Or use the SendGrid API to list templates and their versions
+ */
 export class TemplateVersion extends pulumi.CustomResource {
     /**
      * Get an existing TemplateVersion resource's state with the given name, ID, and optional extra
@@ -41,7 +99,7 @@ export class TemplateVersion extends pulumi.CustomResource {
      */
     declare public readonly editor: pulumi.Output<string | undefined>;
     /**
-     * If true (default), plainContent is always generated from html_content. If false, plainContent is not altered.
+     * If true (default), plain*content is always generated from html*content. If false, plainContent is not altered.
      */
     declare public readonly generatePlainContent: pulumi.Output<boolean | undefined>;
     /**
@@ -139,7 +197,7 @@ export interface TemplateVersionState {
      */
     editor?: pulumi.Input<string | undefined>;
     /**
-     * If true (default), plainContent is always generated from html_content. If false, plainContent is not altered.
+     * If true (default), plain*content is always generated from html*content. If false, plainContent is not altered.
      */
     generatePlainContent?: pulumi.Input<boolean | undefined>;
     /**
@@ -189,7 +247,7 @@ export interface TemplateVersionArgs {
      */
     editor?: pulumi.Input<string | undefined>;
     /**
-     * If true (default), plainContent is always generated from html_content. If false, plainContent is not altered.
+     * If true (default), plain*content is always generated from html*content. If false, plainContent is not altered.
      */
     generatePlainContent?: pulumi.Input<boolean | undefined>;
     /**

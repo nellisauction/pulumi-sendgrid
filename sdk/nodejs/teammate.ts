@@ -6,6 +6,139 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a SendGrid teammate. Teammates are team members who have access to your SendGrid account with specific permissions.
+ *
+ * **Important Notes:**
+ * - Admin teammates have full access and don't need scopes
+ * - Scopes '2fa_exempt' and '2fa_required' are set automatically by SendGrid
+ * - Self-service credential scopes (user.password.*, user.multifactor_authentication.*, user.email.update, user.username.update) are granted automatically by SendGrid to password-login teammates and cannot be assigned manually
+ * - 'user.profile.update' is accepted on write and then omitted from the next read, so Terraform can never converge on it: it is rejected in configuration, stripped from writes, and filtered out of state
+ * - Some scopes require specific SendGrid plans (Pro+, Marketing plans, etc.)
+ * - Use timeouts for better reliability with rate limiting
+ *
+ * ## Example Usage
+ *
+ * ### Basic Teammate
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sendgrid from "@nellisauction/pulumi-sendgrid";
+ *
+ * const example = new sendgrid.Teammate("example", {
+ *     email: "teammate@example.com",
+ *     isAdmin: false,
+ *     isSso: false,
+ *     scopes: [
+ *         "mail.send",
+ *         "templates.read",
+ *     ],
+ * });
+ * ```
+ *
+ * ### Admin Teammate
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sendgrid from "@nellisauction/pulumi-sendgrid";
+ *
+ * // Admin teammate - no scopes needed
+ * const admin = new sendgrid.Teammate("admin", {
+ *     email: "admin@example.com",
+ *     isAdmin: true,
+ *     isSso: false,
+ * });
+ * ```
+ *
+ * ### SSO User
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sendgrid from "@nellisauction/pulumi-sendgrid";
+ *
+ * // SSO teammate with first and last name
+ * const ssoUser = new sendgrid.Teammate("sso_user", {
+ *     email: "sso.user@example.com",
+ *     firstName: "John",
+ *     lastName: "Doe",
+ *     isAdmin: false,
+ *     isSso: true,
+ *     scopes: [
+ *         "mail.send",
+ *         "stats.read",
+ *     ],
+ * });
+ * ```
+ *
+ * ### Marketing Team Member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sendgrid from "@nellisauction/pulumi-sendgrid";
+ *
+ * // Marketing teammate with extended permissions
+ * const marketing = new sendgrid.Teammate("marketing", {
+ *     email: "marketing@example.com",
+ *     isAdmin: false,
+ *     isSso: false,
+ *     scopes: [
+ *         "mail.send",
+ *         "marketing.read",
+ *         "marketing.automation.read",
+ *         "templates.read",
+ *         "templates.create",
+ *         "templates.update",
+ *         "stats.read",
+ *     ],
+ * });
+ * ```
+ *
+ * ### Bulk Creation
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sendgrid from "@nellisauction/pulumi-sendgrid";
+ *
+ * const developers = {
+ *     dev1: {
+ *         email: "dev1@example.com",
+ *         scopes: [
+ *             "mail.send",
+ *             "templates.read",
+ *         ],
+ *     },
+ *     dev2: {
+ *         email: "dev2@example.com",
+ *         scopes: [
+ *             "mail.send",
+ *             "templates.read",
+ *             "stats.read",
+ *         ],
+ *     },
+ *     dev3: {
+ *         email: "dev3@example.com",
+ *         scopes: ["mail.send"],
+ *     },
+ * };
+ * const developersTeammate: sendgrid.Teammate[] = [];
+ * for (const range of Object.entries(developers).sort().map(([k, v]) => ({key: k, value: v}))) {
+ *     developersTeammate.push(new sendgrid.Teammate(`developers-${range.key}`, {
+ *         email: range.value.email,
+ *         isAdmin: false,
+ *         isSso: false,
+ *         scopes: range.value.scopes,
+ *     }));
+ * }
+ * ```
+ *
+ * ## Import
+ *
+ * Import existing teammate by email
+ *
+ * ```sh
+ * $ pulumi import sendgrid:index/teammate:Teammate example teammate@example.com
+ * ```
+ */
 export class Teammate extends pulumi.CustomResource {
     /**
      * Get an existing Teammate resource's state with the given name, ID, and optional extra
@@ -47,7 +180,7 @@ export class Teammate extends pulumi.CustomResource {
      */
     declare public readonly isAdmin: pulumi.Output<boolean>;
     /**
-     * Whether this is a Single Sign-On (SSO) user. SSO users require firstName and last_name.
+     * Whether this is a Single Sign-On (SSO) user. SSO users require first*name and last*name.
      */
     declare public readonly isSso: pulumi.Output<boolean>;
     /**
@@ -55,7 +188,7 @@ export class Teammate extends pulumi.CustomResource {
      */
     declare public readonly lastName: pulumi.Output<string | undefined>;
     /**
-     * List of permission scopes for the teammate. Ignored if isAdmin is true. Cannot include '2fa_exempt' or '2fa_required' as these are managed automatically by SendGrid. This attribute is also computed: leaving it unset keeps whatever scopes the teammate currently has on the server instead of clearing them, and it must be left unset for a teammate with subuser_access, because SendGrid refuses root scopes for those teammates. See SendGrid API documentation for available scopes.
+     * List of permission scopes for the teammate. Ignored if is*admin is true. Cannot include '2fa*exempt' or '2fa*required' as these are managed automatically by SendGrid. This attribute is also computed: leaving it unset keeps whatever scopes the teammate currently has on the server instead of clearing them, and it must be left unset for a teammate with subuser*access, because SendGrid refuses root scopes for those teammates. See SendGrid API documentation for available scopes.
      */
     declare public readonly scopes: pulumi.Output<string[]>;
     /**
@@ -136,7 +269,7 @@ export interface TeammateState {
      */
     isAdmin?: pulumi.Input<boolean | undefined>;
     /**
-     * Whether this is a Single Sign-On (SSO) user. SSO users require firstName and last_name.
+     * Whether this is a Single Sign-On (SSO) user. SSO users require first*name and last*name.
      */
     isSso?: pulumi.Input<boolean | undefined>;
     /**
@@ -144,7 +277,7 @@ export interface TeammateState {
      */
     lastName?: pulumi.Input<string | undefined>;
     /**
-     * List of permission scopes for the teammate. Ignored if isAdmin is true. Cannot include '2fa_exempt' or '2fa_required' as these are managed automatically by SendGrid. This attribute is also computed: leaving it unset keeps whatever scopes the teammate currently has on the server instead of clearing them, and it must be left unset for a teammate with subuser_access, because SendGrid refuses root scopes for those teammates. See SendGrid API documentation for available scopes.
+     * List of permission scopes for the teammate. Ignored if is*admin is true. Cannot include '2fa*exempt' or '2fa*required' as these are managed automatically by SendGrid. This attribute is also computed: leaving it unset keeps whatever scopes the teammate currently has on the server instead of clearing them, and it must be left unset for a teammate with subuser*access, because SendGrid refuses root scopes for those teammates. See SendGrid API documentation for available scopes.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -178,7 +311,7 @@ export interface TeammateArgs {
      */
     isAdmin: pulumi.Input<boolean>;
     /**
-     * Whether this is a Single Sign-On (SSO) user. SSO users require firstName and last_name.
+     * Whether this is a Single Sign-On (SSO) user. SSO users require first*name and last*name.
      */
     isSso: pulumi.Input<boolean>;
     /**
@@ -186,7 +319,7 @@ export interface TeammateArgs {
      */
     lastName?: pulumi.Input<string | undefined>;
     /**
-     * List of permission scopes for the teammate. Ignored if isAdmin is true. Cannot include '2fa_exempt' or '2fa_required' as these are managed automatically by SendGrid. This attribute is also computed: leaving it unset keeps whatever scopes the teammate currently has on the server instead of clearing them, and it must be left unset for a teammate with subuser_access, because SendGrid refuses root scopes for those teammates. See SendGrid API documentation for available scopes.
+     * List of permission scopes for the teammate. Ignored if is*admin is true. Cannot include '2fa*exempt' or '2fa*required' as these are managed automatically by SendGrid. This attribute is also computed: leaving it unset keeps whatever scopes the teammate currently has on the server instead of clearing them, and it must be left unset for a teammate with subuser*access, because SendGrid refuses root scopes for those teammates. See SendGrid API documentation for available scopes.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

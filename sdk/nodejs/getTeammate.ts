@@ -22,12 +22,33 @@ export function getTeammate(args?: GetTeammateArgs, opts?: pulumi.InvokeOptions)
  * A collection of arguments for invoking getTeammate.
  */
 export interface GetTeammateArgs {
+    /**
+     * Teammate's email
+     */
     email?: string;
+    /**
+     * Teammate's first name
+     */
     firstName?: string;
+    /**
+     * True if teammate has admin privileges
+     */
     isAdmin?: boolean;
+    /**
+     * Teammate's last name
+     */
     lastName?: string;
+    /**
+     * Scopes associated to teammate
+     */
     scopes?: string[];
+    /**
+     * Indicate the type of user: account owner, teammate admin user, or normal teammate
+     */
     userType?: string;
+    /**
+     * Teammate's username
+     */
     username?: string;
 }
 
@@ -35,16 +56,37 @@ export interface GetTeammateArgs {
  * A collection of values returned by getTeammate.
  */
 export interface GetTeammateResult {
+    /**
+     * Teammate's email
+     */
     readonly email?: string;
+    /**
+     * Teammate's first name
+     */
     readonly firstName?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * True if teammate has admin privileges
+     */
     readonly isAdmin?: boolean;
+    /**
+     * Teammate's last name
+     */
     readonly lastName?: string;
+    /**
+     * Scopes associated to teammate
+     */
     readonly scopes?: string[];
+    /**
+     * Indicate the type of user: account owner, teammate admin user, or normal teammate
+     */
     readonly userType?: string;
+    /**
+     * Teammate's username
+     */
     readonly username?: string;
 }
 export function getTeammateOutput(args?: GetTeammateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTeammateResult> {
@@ -65,11 +107,32 @@ export function getTeammateOutput(args?: GetTeammateOutputArgs, opts?: pulumi.In
  * A collection of arguments for invoking getTeammate.
  */
 export interface GetTeammateOutputArgs {
+    /**
+     * Teammate's email
+     */
     email?: pulumi.Input<string | undefined>;
+    /**
+     * Teammate's first name
+     */
     firstName?: pulumi.Input<string | undefined>;
+    /**
+     * True if teammate has admin privileges
+     */
     isAdmin?: pulumi.Input<boolean | undefined>;
+    /**
+     * Teammate's last name
+     */
     lastName?: pulumi.Input<string | undefined>;
+    /**
+     * Scopes associated to teammate
+     */
     scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Indicate the type of user: account owner, teammate admin user, or normal teammate
+     */
     userType?: pulumi.Input<string | undefined>;
+    /**
+     * Teammate's username
+     */
     username?: pulumi.Input<string | undefined>;
 }

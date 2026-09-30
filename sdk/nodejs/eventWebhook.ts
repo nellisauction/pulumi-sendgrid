@@ -4,6 +4,95 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manages SendGrid Event Webhook settings. Event Webhooks allow you to receive real-time notifications about email events such as deliveries, opens, clicks, bounces, and more. Multiple webhooks can be created per account.
+ *
+ * **Important Notes:**
+ *
+ * - There is only one event webhook per SendGrid account (or subuser)
+ * - The webhook cannot be deleted, only disabled
+ * - Event types require specific tracking settings to be enabled:
+ *   - `open` and `click` events require Open Tracking and Click Tracking
+ *   - `unsubscribe`, `groupResubscribe`, and `groupUnsubscribe` require Subscription Tracking
+ * - Use `friendlyName` to help identify your webhook (available in SendGrid dashboard)
+ * - OAuth authentication is optional but recommended for enhanced security
+ * - Signature verification can be enabled for webhook request verification
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sendgrid from "@nellisauction/pulumi-sendgrid";
+ *
+ * // Basic event webhook configuration
+ * const basic = new sendgrid.EventWebhook("basic", {
+ *     enabled: true,
+ *     url: "https://api.myapp.com/sendgrid/events",
+ *     friendlyName: "Production Event Webhook",
+ *     delivered: true,
+ *     bounce: true,
+ *     dropped: true,
+ *     spamReport: true,
+ *     unsubscribe: true,
+ *     open: true,
+ *     click: true,
+ *     processed: true,
+ *     deferred: true,
+ *     groupResubscribe: true,
+ *     groupUnsubscribe: true,
+ * });
+ * // Multiple webhooks example
+ * const dev = new sendgrid.EventWebhook("dev", {
+ *     enabled: true,
+ *     url: "https://dev.myapp.com/sendgrid/events",
+ *     friendlyName: "Development Webhook",
+ *     delivered: true,
+ *     bounce: true,
+ *     dropped: true,
+ * });
+ * const prod = new sendgrid.EventWebhook("prod", {
+ *     enabled: true,
+ *     url: "https://prod.myapp.com/sendgrid/events",
+ *     friendlyName: "Production Webhook",
+ *     delivered: true,
+ *     bounce: true,
+ *     dropped: true,
+ *     spamReport: true,
+ *     open: true,
+ *     click: true,
+ * });
+ * ```
+ *
+ * ## Additional Information
+ *
+ * ### Event Types
+ *
+ * The following event types are available:
+ *
+ * - **delivered**: Message successfully delivered to receiving server
+ * - **processed**: Message received by SendGrid and ready for delivery
+ * - **dropped**: Message not delivered (spam, invalid address, etc.)
+ * - **deferred**: Recipient's email server temporarily rejected message
+ * - **bounce**: Receiving server permanently rejected message
+ * - **open**: Recipient opened the HTML message (requires Open Tracking)
+ * - **click**: Recipient clicked a link (requires Click Tracking)
+ * - **spam_report**: Recipient marked message as spam
+ * - **unsubscribe**: Recipient clicked subscription management link
+ * - **group_unsubscribe**: Recipient unsubscribed from specific group
+ * - **group_resubscribe**: Recipient resubscribed to specific group
+ *
+ * ### Security
+ *
+ * For enhanced security, you can:
+ * 1. Enable OAuth authentication by providing `oauthClientId`, `oauthClientSecret`, and `oauthTokenUrl`
+ * 2. Enable signature verification using the `signed` field
+ * 3. Use the `publicKey` (computed) for webhook payload verification
+ *
+ * ### References
+ *
+ * - [SendGrid Event Webhook Documentation](https://www.twilio.com/docs/sendgrid/api-reference/webhooks/create-an-event-webhook)
+ * - [Event Webhook Overview](https://www.twilio.com/docs/sendgrid/for-developers/tracking-events/event)
+ */
 export class EventWebhook extends pulumi.CustomResource {
     /**
      * Get an existing EventWebhook resource's state with the given name, ID, and optional extra
@@ -73,11 +162,11 @@ export class EventWebhook extends pulumi.CustomResource {
      */
     declare public readonly oauthClientId: pulumi.Output<string | undefined>;
     /**
-     * This secret is needed only once to create an access token. SendGrid will store this secret, allowing you to update your Client ID and Token URL without passing the secret to SendGrid again. When passing data in this field, you must also include the oauthClientId and oauthTokenUrl fields.
+     * This secret is needed only once to create an access token. SendGrid will store this secret, allowing you to update your Client ID and Token URL without passing the secret to SendGrid again. When passing data in this field, you must also include the oauth*client*id and oauth*token*url fields.
      */
     declare public readonly oauthClientSecret: pulumi.Output<string | undefined>;
     /**
-     * The URL where Twilio SendGrid sends the Client ID and Client Secret to generate an access token. This should be your OAuth server or service provider. When passing data in this field, you must also include the oauthClientId field.
+     * The URL where Twilio SendGrid sends the Client ID and Client Secret to generate an access token. This should be your OAuth server or service provider. When passing data in this field, you must also include the oauth*client*id field.
      */
     declare public readonly oauthTokenUrl: pulumi.Output<string | undefined>;
     /**
@@ -221,11 +310,11 @@ export interface EventWebhookState {
      */
     oauthClientId?: pulumi.Input<string | undefined>;
     /**
-     * This secret is needed only once to create an access token. SendGrid will store this secret, allowing you to update your Client ID and Token URL without passing the secret to SendGrid again. When passing data in this field, you must also include the oauthClientId and oauthTokenUrl fields.
+     * This secret is needed only once to create an access token. SendGrid will store this secret, allowing you to update your Client ID and Token URL without passing the secret to SendGrid again. When passing data in this field, you must also include the oauth*client*id and oauth*token*url fields.
      */
     oauthClientSecret?: pulumi.Input<string | undefined>;
     /**
-     * The URL where Twilio SendGrid sends the Client ID and Client Secret to generate an access token. This should be your OAuth server or service provider. When passing data in this field, you must also include the oauthClientId field.
+     * The URL where Twilio SendGrid sends the Client ID and Client Secret to generate an access token. This should be your OAuth server or service provider. When passing data in this field, you must also include the oauth*client*id field.
      */
     oauthTokenUrl?: pulumi.Input<string | undefined>;
     /**
@@ -303,11 +392,11 @@ export interface EventWebhookArgs {
      */
     oauthClientId?: pulumi.Input<string | undefined>;
     /**
-     * This secret is needed only once to create an access token. SendGrid will store this secret, allowing you to update your Client ID and Token URL without passing the secret to SendGrid again. When passing data in this field, you must also include the oauthClientId and oauthTokenUrl fields.
+     * This secret is needed only once to create an access token. SendGrid will store this secret, allowing you to update your Client ID and Token URL without passing the secret to SendGrid again. When passing data in this field, you must also include the oauth*client*id and oauth*token*url fields.
      */
     oauthClientSecret?: pulumi.Input<string | undefined>;
     /**
-     * The URL where Twilio SendGrid sends the Client ID and Client Secret to generate an access token. This should be your OAuth server or service provider. When passing data in this field, you must also include the oauthClientId field.
+     * The URL where Twilio SendGrid sends the Client ID and Client Secret to generate an access token. This should be your OAuth server or service provider. When passing data in this field, you must also include the oauth*client*id field.
      */
     oauthTokenUrl?: pulumi.Input<string | undefined>;
     /**
