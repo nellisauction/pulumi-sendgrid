@@ -4,6 +4,52 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sendgrid from "@nellisauction/pulumi-sendgrid";
+ *
+ * // Basic subuser for a separate application
+ * const appSubuser = new sendgrid.Subuser("app_subuser", {
+ *     username: "app-emails",
+ *     email: "app-emails@mycompany.com",
+ *     password: "SecurePassword123!",
+ *     ips: ["192.168.1.100"],
+ * });
+ * // Disabled subuser (can be enabled later)
+ * const stagingSubuser = new sendgrid.Subuser("staging_subuser", {
+ *     username: "staging-app",
+ *     email: "staging@mycompany.com",
+ *     password: "StagingPass456!",
+ *     ips: ["192.168.1.101"],
+ *     disabled: true,
+ * });
+ * // EU data residency subuser (requires a dedicated EU IP; region cannot be changed after creation)
+ * const euSubuser = new sendgrid.Subuser("eu_subuser", {
+ *     username: "app-emails-eu",
+ *     email: "app-emails-eu@mycompany.com",
+ *     password: "SecurePassword789!",
+ *     region: "eu",
+ *     ips: ["192.168.1.102"],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
+ *
+ * !/bin/bash
+ *
+ * Import an existing subuser using its username
+ *
+ * ```sh
+ * $ pulumi import sendgrid:index/subuser:Subuser app_subuser app-emails
+ * ```
+ *
+ * You can find subuser usernames in the SendGrid dashboard under Settings > Subuser Management
+ */
 export class Subuser extends pulumi.CustomResource {
     /**
      * Get an existing Subuser resource's state with the given name, ID, and optional extra

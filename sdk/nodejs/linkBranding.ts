@@ -6,6 +6,41 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sendgrid from "@nellisauction/pulumi-sendgrid";
+ *
+ * // Basic link branding for click tracking
+ * const main = new sendgrid.LinkBranding("main", {
+ *     domain: "links.mycompany.com",
+ *     subdomain: "click",
+ *     isDefault: true,
+ * });
+ * // Marketing-specific link branding
+ * const marketing = new sendgrid.LinkBranding("marketing", {
+ *     domain: "marketing.mycompany.com",
+ *     subdomain: "track",
+ *     isDefault: false,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
+ *
+ * !/bin/bash
+ *
+ * Import link branding using its ID
+ *
+ * ```sh
+ * $ pulumi import sendgrid:index/linkBranding:LinkBranding main 12345
+ * ```
+ *
+ * Find link branding IDs in SendGrid dashboard under Settings > Sender Authentication
+ */
 export class LinkBranding extends pulumi.CustomResource {
     /**
      * Get an existing LinkBranding resource's state with the given name, ID, and optional extra

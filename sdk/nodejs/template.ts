@@ -4,6 +4,41 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sendgrid from "@nellisauction/pulumi-sendgrid";
+ *
+ * // Basic dynamic template for transactional emails
+ * const welcomeEmail = new sendgrid.Template("welcome_email", {
+ *     name: "Welcome Email Template",
+ *     generation: "dynamic",
+ * });
+ * // Legacy template (for backward compatibility)
+ * const legacyNewsletter = new sendgrid.Template("legacy_newsletter", {
+ *     name: "Legacy Newsletter Template",
+ *     generation: "legacy",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
+ *
+ * !/bin/bash
+ *
+ * Import an existing template using its ID
+ * Replace 'd-template-id-here' with your actual template ID
+ *
+ * ```sh
+ * $ pulumi import sendgrid:index/template:Template welcome_email d-template-id-here
+ * ```
+ *
+ * You can find template IDs in the SendGrid dashboard under Email API > Dynamic Templates
+ * Or use the SendGrid API to list existing templates
+ */
 export class Template extends pulumi.CustomResource {
     /**
      * Get an existing Template resource's state with the given name, ID, and optional extra

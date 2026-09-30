@@ -6,6 +6,57 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as sendgrid from "@nellisauction/pulumi-sendgrid";
+ *
+ * // Basic domain authentication setup
+ * const main = new sendgrid.DomainAuthentication("main", {
+ *     domain: "mycompany.com",
+ *     subdomain: "em",
+ *     isDefault: true,
+ *     automaticSecurity: true,
+ *     customSpf: false,
+ * });
+ * // Domain with custom SPF record
+ * const marketing = new sendgrid.DomainAuthentication("marketing", {
+ *     domain: "marketing.mycompany.com",
+ *     subdomain: "mail",
+ *     isDefault: false,
+ *     automaticSecurity: false,
+ *     customSpf: true,
+ * });
+ * // DMARC is not part of domain authentication: SendGrid neither creates nor
+ * // returns a _dmarc record, and the policy (p=none|quarantine|reject, rua=...)
+ * // is the domain owner's decision. Publish it at your DNS provider next to the
+ * // records SendGrid returns in `dns`. Route53 is shown; any DNS provider works.
+ * const dmarc = new aws.route53.Record("dmarc", {
+ *     zoneId: route53ZoneId,
+ *     name: pulumi.interpolate`_dmarc.${main.domain}`,
+ *     type: aws.route53.RecordType.TXT,
+ *     ttl: 300,
+ *     records: ["v=DMARC1; p=none; rua=mailto:dmarc-reports@mycompany.com"],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
+ *
+ * !/bin/bash
+ *
+ * Import domain authentication using its ID
+ *
+ * ```sh
+ * $ pulumi import sendgrid:index/domainAuthentication:DomainAuthentication main 12345
+ * ```
+ *
+ * Find domain authentication IDs in SendGrid dashboard under Settings > Sender Authentication
+ */
 export class DomainAuthentication extends pulumi.CustomResource {
     /**
      * Get an existing DomainAuthentication resource's state with the given name, ID, and optional extra

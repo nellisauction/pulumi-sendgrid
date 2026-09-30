@@ -17,7 +17,13 @@ export function getUnsubscribeGroup(args?: GetUnsubscribeGroupArgs, opts?: pulum
  * A collection of arguments for invoking getUnsubscribeGroup.
  */
 export interface GetUnsubscribeGroupArgs {
+    /**
+     * The id of the unsubscribe group to retrieve
+     */
     groupId?: string;
+    /**
+     * The name of the unsubscribe group to retrieve
+     */
     name?: string;
 }
 
@@ -25,14 +31,29 @@ export interface GetUnsubscribeGroupArgs {
  * A collection of values returned by getUnsubscribeGroup.
  */
 export interface GetUnsubscribeGroupResult {
+    /**
+     * The description of the unsubscribe group
+     */
     readonly description: string;
+    /**
+     * The id of the unsubscribe group to retrieve
+     */
     readonly groupId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Should this unsubscribe group be used as the default group?
+     */
     readonly isDefault: boolean;
+    /**
+     * The name of the unsubscribe group to retrieve
+     */
     readonly name?: string;
+    /**
+     * The number of unsubscribes that belong to the group.
+     */
     readonly unsubscribes: number;
 }
 export function getUnsubscribeGroupOutput(args?: GetUnsubscribeGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUnsubscribeGroupResult> {
@@ -48,6 +69,12 @@ export function getUnsubscribeGroupOutput(args?: GetUnsubscribeGroupOutputArgs, 
  * A collection of arguments for invoking getUnsubscribeGroup.
  */
 export interface GetUnsubscribeGroupOutputArgs {
+    /**
+     * The id of the unsubscribe group to retrieve
+     */
     groupId?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the unsubscribe group to retrieve
+     */
     name?: pulumi.Input<string | undefined>;
 }

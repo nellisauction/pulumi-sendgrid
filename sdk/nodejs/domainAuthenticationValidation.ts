@@ -4,6 +4,37 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sendgrid from "@nellisauction/pulumi-sendgrid";
+ *
+ * // Basic domain authentication setup
+ * const main = new sendgrid.DomainAuthentication("main", {
+ *     domain: "mycompany.com",
+ *     subdomain: "em",
+ *     isDefault: true,
+ *     automaticSecurity: true,
+ *     customSpf: false,
+ * });
+ * // Check domain authentication validation
+ * const _this = new sendgrid.DomainAuthenticationValidation("this", {domainAuthenticationId: main.id});
+ * ```
+ *
+ * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
+ *
+ * !/bin/bash
+ *
+ * Import domain authentication validation using its ID
+ *
+ * ```sh
+ * $ pulumi import sendgrid:index/domainAuthenticationValidation:DomainAuthenticationValidation this 12345
+ * ```
+ */
 export class DomainAuthenticationValidation extends pulumi.CustomResource {
     /**
      * Get an existing DomainAuthenticationValidation resource's state with the given name, ID, and optional extra

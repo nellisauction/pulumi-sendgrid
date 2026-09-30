@@ -4,6 +4,43 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sendgrid from "@nellisauction/pulumi-sendgrid";
+ *
+ * // Basic parse webhook for inbound email processing
+ * const inbound = new sendgrid.ParseWebhook("inbound", {
+ *     hostname: "inbound.myapp.com",
+ *     url: "https://api.myapp.com/email/parse",
+ *     spamCheck: true,
+ *     sendRaw: false,
+ * });
+ * // Advanced parse webhook with raw content
+ * const support = new sendgrid.ParseWebhook("support", {
+ *     hostname: "support.myapp.com",
+ *     url: "https://api.myapp.com/support/parse",
+ *     spamCheck: false,
+ *     sendRaw: true,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
+ *
+ * !/bin/bash
+ *
+ * Import an existing parse webhook using its hostname
+ *
+ * ```sh
+ * $ pulumi import sendgrid:index/parseWebhook:ParseWebhook inbound inbound.myapp.com
+ * ```
+ *
+ * You can find parse webhooks in the SendGrid dashboard under Settings > Inbound Parse
+ */
 export class ParseWebhook extends pulumi.CustomResource {
     /**
      * Get an existing ParseWebhook resource's state with the given name, ID, and optional extra

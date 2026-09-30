@@ -39,7 +39,7 @@ func Provider() tfbridge.ProviderInfo {
 		License:           "Apache-2.0",
 		Homepage:          "https://github.com/nellisauction/pulumi-sendgrid",
 		Repository:        "https://github.com/nellisauction/pulumi-sendgrid",
-		GitHubOrg:         "anna-money",
+		GitHubOrg:         "arslanbekov",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"api_key": {
 				Default: &tfbridge.DefaultInfo{

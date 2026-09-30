@@ -4,6 +4,47 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sendgrid from "@nellisauction/pulumi-sendgrid";
+ *
+ * // Basic SSO integration
+ * const okta = new sendgrid.SsoIntegration("okta", {
+ *     name: "Okta SSO",
+ *     enabled: true,
+ *     signinUrl: "https://dev-12345.okta.com/app/sendgrid/abcd1234/sso/saml",
+ *     signoutUrl: "https://dev-12345.okta.com/login/signout",
+ *     entityId: "http://www.okta.com/abcd1234",
+ *     completedIntegration: true,
+ * });
+ * // SSO integration for Azure AD
+ * const azureAd = new sendgrid.SsoIntegration("azure_ad", {
+ *     name: "Azure Active Directory",
+ *     enabled: true,
+ *     signinUrl: "https://login.microsoftonline.com/tenant-id/saml2",
+ *     signoutUrl: "https://login.microsoftonline.com/tenant-id/saml2",
+ *     entityId: "https://sts.windows.net/tenant-id/",
+ *     completedIntegration: false,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
+ *
+ * !/bin/bash
+ *
+ * Import SSO integration using its ID
+ *
+ * ```sh
+ * $ pulumi import sendgrid:index/ssoIntegration:SsoIntegration okta abcd-1234-efgh-5678
+ * ```
+ *
+ * Find SSO integration IDs in SendGrid dashboard under Settings > SSO
+ */
 export class SsoIntegration extends pulumi.CustomResource {
     /**
      * Get an existing SsoIntegration resource's state with the given name, ID, and optional extra
@@ -34,8 +75,8 @@ export class SsoIntegration extends pulumi.CustomResource {
 
     /**
      * The URL where your IdP should POST its SAML response.
-     * 					This is the Twilio SendGrid URL that is responsible for receiving and parsing a SAML assertion.
-     * 					This is the same URL as the Single Sign-On URL when using SendGrid.
+     * 				This is the Twilio SendGrid URL that is responsible for receiving and parsing a SAML assertion.
+     * 				This is the same URL as the Single Sign-On URL when using SendGrid.
      */
     declare public /*out*/ readonly audienceUrl: pulumi.Output<string>;
     /**
@@ -48,7 +89,7 @@ export class SsoIntegration extends pulumi.CustomResource {
     declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * An identifier provided by your IdP to identify Twilio SendGrid in the SAML interaction.
-     * 					This is called the 'SAML Issuer ID' in the Twilio SendGrid UI.
+     * 				This is called the 'SAML Issuer ID' in the Twilio SendGrid UI.
      */
     declare public readonly entityId: pulumi.Output<string | undefined>;
     /**
@@ -57,18 +98,18 @@ export class SsoIntegration extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     /**
      * The IdP's SAML POST endpoint. This endpoint should receive requests
-     * 					and initiate an SSO login flow. This is called the 'Embed Link' in the Twilio SendGrid UI.
+     * 				and initiate an SSO login flow. This is called the 'Embed Link' in the Twilio SendGrid UI.
      */
     declare public readonly signinUrl: pulumi.Output<string | undefined>;
     /**
      * This URL is relevant only for an IdP-initiated authentication flow.
-     * 					If a user authenticates from their IdP, this URL will return them to their IdP when logging out.
+     * 				If a user authenticates from their IdP, this URL will return them to their IdP when logging out.
      */
     declare public readonly signoutUrl: pulumi.Output<string | undefined>;
     /**
      * The URL where your IdP should POST its SAML response.
-     * 					This is the Twilio SendGrid URL that is responsible for receiving and parsing a SAML assertion.
-     * 					This is the same URL as the Audience URL when using SendGrid.
+     * 				This is the Twilio SendGrid URL that is responsible for receiving and parsing a SAML assertion.
+     * 				This is the same URL as the Audience URL when using SendGrid.
      */
     declare public /*out*/ readonly singleSignonUrl: pulumi.Output<string>;
 
@@ -118,8 +159,8 @@ export class SsoIntegration extends pulumi.CustomResource {
 export interface SsoIntegrationState {
     /**
      * The URL where your IdP should POST its SAML response.
-     * 					This is the Twilio SendGrid URL that is responsible for receiving and parsing a SAML assertion.
-     * 					This is the same URL as the Single Sign-On URL when using SendGrid.
+     * 				This is the Twilio SendGrid URL that is responsible for receiving and parsing a SAML assertion.
+     * 				This is the same URL as the Single Sign-On URL when using SendGrid.
      */
     audienceUrl?: pulumi.Input<string | undefined>;
     /**
@@ -132,7 +173,7 @@ export interface SsoIntegrationState {
     enabled?: pulumi.Input<boolean | undefined>;
     /**
      * An identifier provided by your IdP to identify Twilio SendGrid in the SAML interaction.
-     * 					This is called the 'SAML Issuer ID' in the Twilio SendGrid UI.
+     * 				This is called the 'SAML Issuer ID' in the Twilio SendGrid UI.
      */
     entityId?: pulumi.Input<string | undefined>;
     /**
@@ -141,18 +182,18 @@ export interface SsoIntegrationState {
     name?: pulumi.Input<string | undefined>;
     /**
      * The IdP's SAML POST endpoint. This endpoint should receive requests
-     * 					and initiate an SSO login flow. This is called the 'Embed Link' in the Twilio SendGrid UI.
+     * 				and initiate an SSO login flow. This is called the 'Embed Link' in the Twilio SendGrid UI.
      */
     signinUrl?: pulumi.Input<string | undefined>;
     /**
      * This URL is relevant only for an IdP-initiated authentication flow.
-     * 					If a user authenticates from their IdP, this URL will return them to their IdP when logging out.
+     * 				If a user authenticates from their IdP, this URL will return them to their IdP when logging out.
      */
     signoutUrl?: pulumi.Input<string | undefined>;
     /**
      * The URL where your IdP should POST its SAML response.
-     * 					This is the Twilio SendGrid URL that is responsible for receiving and parsing a SAML assertion.
-     * 					This is the same URL as the Audience URL when using SendGrid.
+     * 				This is the Twilio SendGrid URL that is responsible for receiving and parsing a SAML assertion.
+     * 				This is the same URL as the Audience URL when using SendGrid.
      */
     singleSignonUrl?: pulumi.Input<string | undefined>;
 }
@@ -167,7 +208,7 @@ export interface SsoIntegrationArgs {
     enabled: pulumi.Input<boolean>;
     /**
      * An identifier provided by your IdP to identify Twilio SendGrid in the SAML interaction.
-     * 					This is called the 'SAML Issuer ID' in the Twilio SendGrid UI.
+     * 				This is called the 'SAML Issuer ID' in the Twilio SendGrid UI.
      */
     entityId?: pulumi.Input<string | undefined>;
     /**
@@ -176,12 +217,12 @@ export interface SsoIntegrationArgs {
     name?: pulumi.Input<string | undefined>;
     /**
      * The IdP's SAML POST endpoint. This endpoint should receive requests
-     * 					and initiate an SSO login flow. This is called the 'Embed Link' in the Twilio SendGrid UI.
+     * 				and initiate an SSO login flow. This is called the 'Embed Link' in the Twilio SendGrid UI.
      */
     signinUrl?: pulumi.Input<string | undefined>;
     /**
      * This URL is relevant only for an IdP-initiated authentication flow.
-     * 					If a user authenticates from their IdP, this URL will return them to their IdP when logging out.
+     * 				If a user authenticates from their IdP, this URL will return them to their IdP when logging out.
      */
     signoutUrl?: pulumi.Input<string | undefined>;
 }
