@@ -157,7 +157,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Scopes granted on this subuser. Required when\u003cspan pulumi-lang-nodejs=\" permissionType \" pulumi-lang-dotnet=\" PermissionType \" pulumi-lang-go=\" permissionType \" pulumi-lang-python=\" permission_type \" pulumi-lang-yaml=\" permissionType \" pulumi-lang-java=\" permissionType \"\u003e permissionType \u003c/span\u003eis \"restricted\"; ignored for \"admin\".\n"
+                    "description": "Scopes granted on this subuser. Required when\u003cspan pulumi-lang-nodejs=\" permissionType \" pulumi-lang-dotnet=\" PermissionType \" pulumi-lang-go=\" permissionType \" pulumi-lang-python=\" permission_type \" pulumi-lang-yaml=\" permissionType \" pulumi-lang-java=\" permissionType \" pulumi-lang-hcl=\" permission_type \"\u003e permissionType \u003c/span\u003eis \"restricted\"; ignored for \"admin\".\n"
                 }
             },
             "type": "object",
@@ -611,12 +611,12 @@
                 },
                 "oauthClientSecret": {
                     "type": "string",
-                    "description": "This secret is needed only once to create an access token. SendGrid will store this secret, allowing you to update your Client ID and Token URL without passing the secret to SendGrid again. When passing data in this field, you must also include the\u003cspan pulumi-lang-nodejs=\" oauthClientId \" pulumi-lang-dotnet=\" OauthClientId \" pulumi-lang-go=\" oauthClientId \" pulumi-lang-python=\" oauth_client_id \" pulumi-lang-yaml=\" oauthClientId \" pulumi-lang-java=\" oauthClientId \"\u003e oauthClientId \u003c/span\u003eand\u003cspan pulumi-lang-nodejs=\" oauthTokenUrl \" pulumi-lang-dotnet=\" OauthTokenUrl \" pulumi-lang-go=\" oauthTokenUrl \" pulumi-lang-python=\" oauth_token_url \" pulumi-lang-yaml=\" oauthTokenUrl \" pulumi-lang-java=\" oauthTokenUrl \"\u003e oauthTokenUrl \u003c/span\u003efields.",
+                    "description": "This secret is needed only once to create an access token. SendGrid will store this secret, allowing you to update your Client ID and Token URL without passing the secret to SendGrid again. When passing data in this field, you must also include the\u003cspan pulumi-lang-nodejs=\" oauthClientId \" pulumi-lang-dotnet=\" OauthClientId \" pulumi-lang-go=\" oauthClientId \" pulumi-lang-python=\" oauth_client_id \" pulumi-lang-yaml=\" oauthClientId \" pulumi-lang-java=\" oauthClientId \" pulumi-lang-hcl=\" oauth_client_id \"\u003e oauthClientId \u003c/span\u003eand\u003cspan pulumi-lang-nodejs=\" oauthTokenUrl \" pulumi-lang-dotnet=\" OauthTokenUrl \" pulumi-lang-go=\" oauthTokenUrl \" pulumi-lang-python=\" oauth_token_url \" pulumi-lang-yaml=\" oauthTokenUrl \" pulumi-lang-java=\" oauthTokenUrl \" pulumi-lang-hcl=\" oauth_token_url \"\u003e oauthTokenUrl \u003c/span\u003efields.",
                     "secret": true
                 },
                 "oauthTokenUrl": {
                     "type": "string",
-                    "description": "The URL where Twilio SendGrid sends the Client ID and Client Secret to generate an access token. This should be your OAuth server or service provider. When passing data in this field, you must also include the\u003cspan pulumi-lang-nodejs=\" oauthClientId \" pulumi-lang-dotnet=\" OauthClientId \" pulumi-lang-go=\" oauthClientId \" pulumi-lang-python=\" oauth_client_id \" pulumi-lang-yaml=\" oauthClientId \" pulumi-lang-java=\" oauthClientId \"\u003e oauthClientId \u003c/span\u003efield."
+                    "description": "The URL where Twilio SendGrid sends the Client ID and Client Secret to generate an access token. This should be your OAuth server or service provider. When passing data in this field, you must also include the\u003cspan pulumi-lang-nodejs=\" oauthClientId \" pulumi-lang-dotnet=\" OauthClientId \" pulumi-lang-go=\" oauthClientId \" pulumi-lang-python=\" oauth_client_id \" pulumi-lang-yaml=\" oauthClientId \" pulumi-lang-java=\" oauthClientId \" pulumi-lang-hcl=\" oauth_client_id \"\u003e oauthClientId \u003c/span\u003efield."
                 },
                 "open": {
                     "type": "boolean",
@@ -695,12 +695,12 @@
                 },
                 "oauthClientSecret": {
                     "type": "string",
-                    "description": "This secret is needed only once to create an access token. SendGrid will store this secret, allowing you to update your Client ID and Token URL without passing the secret to SendGrid again. When passing data in this field, you must also include the\u003cspan pulumi-lang-nodejs=\" oauthClientId \" pulumi-lang-dotnet=\" OauthClientId \" pulumi-lang-go=\" oauthClientId \" pulumi-lang-python=\" oauth_client_id \" pulumi-lang-yaml=\" oauthClientId \" pulumi-lang-java=\" oauthClientId \"\u003e oauthClientId \u003c/span\u003eand\u003cspan pulumi-lang-nodejs=\" oauthTokenUrl \" pulumi-lang-dotnet=\" OauthTokenUrl \" pulumi-lang-go=\" oauthTokenUrl \" pulumi-lang-python=\" oauth_token_url \" pulumi-lang-yaml=\" oauthTokenUrl \" pulumi-lang-java=\" oauthTokenUrl \"\u003e oauthTokenUrl \u003c/span\u003efields.",
+                    "description": "This secret is needed only once to create an access token. SendGrid will store this secret, allowing you to update your Client ID and Token URL without passing the secret to SendGrid again. When passing data in this field, you must also include the\u003cspan pulumi-lang-nodejs=\" oauthClientId \" pulumi-lang-dotnet=\" OauthClientId \" pulumi-lang-go=\" oauthClientId \" pulumi-lang-python=\" oauth_client_id \" pulumi-lang-yaml=\" oauthClientId \" pulumi-lang-java=\" oauthClientId \" pulumi-lang-hcl=\" oauth_client_id \"\u003e oauthClientId \u003c/span\u003eand\u003cspan pulumi-lang-nodejs=\" oauthTokenUrl \" pulumi-lang-dotnet=\" OauthTokenUrl \" pulumi-lang-go=\" oauthTokenUrl \" pulumi-lang-python=\" oauth_token_url \" pulumi-lang-yaml=\" oauthTokenUrl \" pulumi-lang-java=\" oauthTokenUrl \" pulumi-lang-hcl=\" oauth_token_url \"\u003e oauthTokenUrl \u003c/span\u003efields.",
                     "secret": true
                 },
                 "oauthTokenUrl": {
                     "type": "string",
-                    "description": "The URL where Twilio SendGrid sends the Client ID and Client Secret to generate an access token. This should be your OAuth server or service provider. When passing data in this field, you must also include the\u003cspan pulumi-lang-nodejs=\" oauthClientId \" pulumi-lang-dotnet=\" OauthClientId \" pulumi-lang-go=\" oauthClientId \" pulumi-lang-python=\" oauth_client_id \" pulumi-lang-yaml=\" oauthClientId \" pulumi-lang-java=\" oauthClientId \"\u003e oauthClientId \u003c/span\u003efield."
+                    "description": "The URL where Twilio SendGrid sends the Client ID and Client Secret to generate an access token. This should be your OAuth server or service provider. When passing data in this field, you must also include the\u003cspan pulumi-lang-nodejs=\" oauthClientId \" pulumi-lang-dotnet=\" OauthClientId \" pulumi-lang-go=\" oauthClientId \" pulumi-lang-python=\" oauth_client_id \" pulumi-lang-yaml=\" oauthClientId \" pulumi-lang-java=\" oauthClientId \" pulumi-lang-hcl=\" oauth_client_id \"\u003e oauthClientId \u003c/span\u003efield."
                 },
                 "open": {
                     "type": "boolean",
@@ -776,12 +776,12 @@
                     },
                     "oauthClientSecret": {
                         "type": "string",
-                        "description": "This secret is needed only once to create an access token. SendGrid will store this secret, allowing you to update your Client ID and Token URL without passing the secret to SendGrid again. When passing data in this field, you must also include the\u003cspan pulumi-lang-nodejs=\" oauthClientId \" pulumi-lang-dotnet=\" OauthClientId \" pulumi-lang-go=\" oauthClientId \" pulumi-lang-python=\" oauth_client_id \" pulumi-lang-yaml=\" oauthClientId \" pulumi-lang-java=\" oauthClientId \"\u003e oauthClientId \u003c/span\u003eand\u003cspan pulumi-lang-nodejs=\" oauthTokenUrl \" pulumi-lang-dotnet=\" OauthTokenUrl \" pulumi-lang-go=\" oauthTokenUrl \" pulumi-lang-python=\" oauth_token_url \" pulumi-lang-yaml=\" oauthTokenUrl \" pulumi-lang-java=\" oauthTokenUrl \"\u003e oauthTokenUrl \u003c/span\u003efields.",
+                        "description": "This secret is needed only once to create an access token. SendGrid will store this secret, allowing you to update your Client ID and Token URL without passing the secret to SendGrid again. When passing data in this field, you must also include the\u003cspan pulumi-lang-nodejs=\" oauthClientId \" pulumi-lang-dotnet=\" OauthClientId \" pulumi-lang-go=\" oauthClientId \" pulumi-lang-python=\" oauth_client_id \" pulumi-lang-yaml=\" oauthClientId \" pulumi-lang-java=\" oauthClientId \" pulumi-lang-hcl=\" oauth_client_id \"\u003e oauthClientId \u003c/span\u003eand\u003cspan pulumi-lang-nodejs=\" oauthTokenUrl \" pulumi-lang-dotnet=\" OauthTokenUrl \" pulumi-lang-go=\" oauthTokenUrl \" pulumi-lang-python=\" oauth_token_url \" pulumi-lang-yaml=\" oauthTokenUrl \" pulumi-lang-java=\" oauthTokenUrl \" pulumi-lang-hcl=\" oauth_token_url \"\u003e oauthTokenUrl \u003c/span\u003efields.",
                         "secret": true
                     },
                     "oauthTokenUrl": {
                         "type": "string",
-                        "description": "The URL where Twilio SendGrid sends the Client ID and Client Secret to generate an access token. This should be your OAuth server or service provider. When passing data in this field, you must also include the\u003cspan pulumi-lang-nodejs=\" oauthClientId \" pulumi-lang-dotnet=\" OauthClientId \" pulumi-lang-go=\" oauthClientId \" pulumi-lang-python=\" oauth_client_id \" pulumi-lang-yaml=\" oauthClientId \" pulumi-lang-java=\" oauthClientId \"\u003e oauthClientId \u003c/span\u003efield."
+                        "description": "The URL where Twilio SendGrid sends the Client ID and Client Secret to generate an access token. This should be your OAuth server or service provider. When passing data in this field, you must also include the\u003cspan pulumi-lang-nodejs=\" oauthClientId \" pulumi-lang-dotnet=\" OauthClientId \" pulumi-lang-go=\" oauthClientId \" pulumi-lang-python=\" oauth_client_id \" pulumi-lang-yaml=\" oauthClientId \" pulumi-lang-java=\" oauthClientId \" pulumi-lang-hcl=\" oauth_client_id \"\u003e oauthClientId \u003c/span\u003efield."
                     },
                     "open": {
                         "type": "boolean",
@@ -842,7 +842,7 @@
                 },
                 "valid": {
                     "type": "boolean",
-                    "description": "Indicates if this is a valid link branding or not. Set to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e to attempt validation on first update."
+                    "description": "Indicates if this is a valid link branding or not. Set to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e to attempt validation on first update."
                 }
             },
             "required": [
@@ -869,7 +869,7 @@
                 },
                 "valid": {
                     "type": "boolean",
-                    "description": "Indicates if this is a valid link branding or not. Set to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e to attempt validation on first update."
+                    "description": "Indicates if this is a valid link branding or not. Set to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e to attempt validation on first update."
                 }
             },
             "requiredInputs": [
@@ -905,7 +905,7 @@
                     },
                     "valid": {
                         "type": "boolean",
-                        "description": "Indicates if this is a valid link branding or not. Set to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e to attempt validation on first update."
+                        "description": "Indicates if this is a valid link branding or not. Set to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e to attempt validation on first update."
                     }
                 },
                 "type": "object"
@@ -931,7 +931,7 @@
                 },
                 "webhookSecurityPolicyId": {
                     "type": "string",
-                    "description": "The ID of the webhook security policy to apply to this parse webhook. See the \u003cspan pulumi-lang-nodejs=\"`sendgrid.WebhookSecurityPolicy`\" pulumi-lang-dotnet=\"`sendgrid.WebhookSecurityPolicy`\" pulumi-lang-go=\"`WebhookSecurityPolicy`\" pulumi-lang-python=\"`WebhookSecurityPolicy`\" pulumi-lang-yaml=\"`sendgrid.WebhookSecurityPolicy`\" pulumi-lang-java=\"`sendgrid.WebhookSecurityPolicy`\"\u003e`sendgrid.WebhookSecurityPolicy`\u003c/span\u003e resource for more details."
+                    "description": "The ID of the webhook security policy to apply to this parse webhook. See the \u003cspan pulumi-lang-nodejs=\"`sendgrid.WebhookSecurityPolicy`\" pulumi-lang-dotnet=\"`sendgrid.WebhookSecurityPolicy`\" pulumi-lang-go=\"`WebhookSecurityPolicy`\" pulumi-lang-python=\"`WebhookSecurityPolicy`\" pulumi-lang-yaml=\"`sendgrid.WebhookSecurityPolicy`\" pulumi-lang-java=\"`sendgrid.WebhookSecurityPolicy`\" pulumi-lang-hcl=\"`sendgrid_webhook_security_policy`\"\u003e`sendgrid.WebhookSecurityPolicy`\u003c/span\u003e resource for more details."
                 }
             },
             "required": [
@@ -959,7 +959,7 @@
                 },
                 "webhookSecurityPolicyId": {
                     "type": "string",
-                    "description": "The ID of the webhook security policy to apply to this parse webhook. See the \u003cspan pulumi-lang-nodejs=\"`sendgrid.WebhookSecurityPolicy`\" pulumi-lang-dotnet=\"`sendgrid.WebhookSecurityPolicy`\" pulumi-lang-go=\"`WebhookSecurityPolicy`\" pulumi-lang-python=\"`WebhookSecurityPolicy`\" pulumi-lang-yaml=\"`sendgrid.WebhookSecurityPolicy`\" pulumi-lang-java=\"`sendgrid.WebhookSecurityPolicy`\"\u003e`sendgrid.WebhookSecurityPolicy`\u003c/span\u003e resource for more details."
+                    "description": "The ID of the webhook security policy to apply to this parse webhook. See the \u003cspan pulumi-lang-nodejs=\"`sendgrid.WebhookSecurityPolicy`\" pulumi-lang-dotnet=\"`sendgrid.WebhookSecurityPolicy`\" pulumi-lang-go=\"`WebhookSecurityPolicy`\" pulumi-lang-python=\"`WebhookSecurityPolicy`\" pulumi-lang-yaml=\"`sendgrid.WebhookSecurityPolicy`\" pulumi-lang-java=\"`sendgrid.WebhookSecurityPolicy`\" pulumi-lang-hcl=\"`sendgrid_webhook_security_policy`\"\u003e`sendgrid.WebhookSecurityPolicy`\u003c/span\u003e resource for more details."
                 }
             },
             "requiredInputs": [
@@ -989,7 +989,7 @@
                     },
                     "webhookSecurityPolicyId": {
                         "type": "string",
-                        "description": "The ID of the webhook security policy to apply to this parse webhook. See the \u003cspan pulumi-lang-nodejs=\"`sendgrid.WebhookSecurityPolicy`\" pulumi-lang-dotnet=\"`sendgrid.WebhookSecurityPolicy`\" pulumi-lang-go=\"`WebhookSecurityPolicy`\" pulumi-lang-python=\"`WebhookSecurityPolicy`\" pulumi-lang-yaml=\"`sendgrid.WebhookSecurityPolicy`\" pulumi-lang-java=\"`sendgrid.WebhookSecurityPolicy`\"\u003e`sendgrid.WebhookSecurityPolicy`\u003c/span\u003e resource for more details."
+                        "description": "The ID of the webhook security policy to apply to this parse webhook. See the \u003cspan pulumi-lang-nodejs=\"`sendgrid.WebhookSecurityPolicy`\" pulumi-lang-dotnet=\"`sendgrid.WebhookSecurityPolicy`\" pulumi-lang-go=\"`WebhookSecurityPolicy`\" pulumi-lang-python=\"`WebhookSecurityPolicy`\" pulumi-lang-yaml=\"`sendgrid.WebhookSecurityPolicy`\" pulumi-lang-java=\"`sendgrid.WebhookSecurityPolicy`\" pulumi-lang-hcl=\"`sendgrid_webhook_security_policy`\"\u003e`sendgrid.WebhookSecurityPolicy`\u003c/span\u003e resource for more details."
                     }
                 },
                 "type": "object"
@@ -1298,7 +1298,7 @@
                 },
                 "isSso": {
                     "type": "boolean",
-                    "description": "Whether this is a Single Sign-On (SSO) user. SSO users require\u003cspan pulumi-lang-nodejs=\" firstName \" pulumi-lang-dotnet=\" FirstName \" pulumi-lang-go=\" firstName \" pulumi-lang-python=\" first_name \" pulumi-lang-yaml=\" firstName \" pulumi-lang-java=\" firstName \"\u003e firstName \u003c/span\u003eand last_name."
+                    "description": "Whether this is a Single Sign-On (SSO) user. SSO users require\u003cspan pulumi-lang-nodejs=\" firstName \" pulumi-lang-dotnet=\" FirstName \" pulumi-lang-go=\" firstName \" pulumi-lang-python=\" first_name \" pulumi-lang-yaml=\" firstName \" pulumi-lang-java=\" firstName \" pulumi-lang-hcl=\" first_name \"\u003e firstName \u003c/span\u003eand last_name."
                 },
                 "lastName": {
                     "type": "string",
@@ -1309,14 +1309,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of permission scopes for the teammate. Ignored if\u003cspan pulumi-lang-nodejs=\" isAdmin \" pulumi-lang-dotnet=\" IsAdmin \" pulumi-lang-go=\" isAdmin \" pulumi-lang-python=\" is_admin \" pulumi-lang-yaml=\" isAdmin \" pulumi-lang-java=\" isAdmin \"\u003e isAdmin \u003c/span\u003eis true. Cannot include '2fa_exempt' or '2fa_required' as these are managed automatically by SendGrid. This attribute is also computed: leaving it unset keeps whatever scopes the teammate currently has on the server instead of clearing them, and it must be left unset for a teammate with subuser_access, because SendGrid refuses root scopes for those teammates. See SendGrid API documentation for available scopes."
+                    "description": "List of permission scopes for the teammate. Ignored if\u003cspan pulumi-lang-nodejs=\" isAdmin \" pulumi-lang-dotnet=\" IsAdmin \" pulumi-lang-go=\" isAdmin \" pulumi-lang-python=\" is_admin \" pulumi-lang-yaml=\" isAdmin \" pulumi-lang-java=\" isAdmin \" pulumi-lang-hcl=\" is_admin \"\u003e isAdmin \u003c/span\u003eis true. Cannot include '2fa_exempt' or '2fa_required' as these are managed automatically by SendGrid. This attribute is also computed: leaving it unset keeps whatever scopes the teammate currently has on the server instead of clearing them, and it must be left unset for a teammate with subuser_access, because SendGrid refuses root scopes for those teammates. See SendGrid API documentation for available scopes."
                 },
                 "subuserAccesses": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sendgrid:index/TeammateSubuserAccess:TeammateSubuserAccess"
                     },
-                    "description": "Subuser permission grants for this SSO teammate. Only applies when \u003cspan pulumi-lang-nodejs=\"`isSso \" pulumi-lang-dotnet=\"`IsSso \" pulumi-lang-go=\"`isSso \" pulumi-lang-python=\"`is_sso \" pulumi-lang-yaml=\"`isSso \" pulumi-lang-java=\"`isSso \"\u003e`isSso \u003c/span\u003e= true`. Setting at least one block sets \u003cspan pulumi-lang-nodejs=\"`hasRestrictedSubuserAccess \" pulumi-lang-dotnet=\"`HasRestrictedSubuserAccess \" pulumi-lang-go=\"`hasRestrictedSubuserAccess \" pulumi-lang-python=\"`has_restricted_subuser_access \" pulumi-lang-yaml=\"`hasRestrictedSubuserAccess \" pulumi-lang-java=\"`hasRestrictedSubuserAccess \"\u003e`hasRestrictedSubuserAccess \u003c/span\u003e= true` on the API. This attribute is also computed: when no block is managed it reflects the teammate's current server-side access without producing a diff, and removing all blocks falls back to that server value rather than clearing access (Terraform does not clobber access it does not manage)."
+                    "description": "Subuser permission grants for this SSO teammate. Only applies when \u003cspan pulumi-lang-nodejs=\"`isSso \" pulumi-lang-dotnet=\"`IsSso \" pulumi-lang-go=\"`isSso \" pulumi-lang-python=\"`is_sso \" pulumi-lang-yaml=\"`isSso \" pulumi-lang-java=\"`isSso \" pulumi-lang-hcl=\"`is_sso \"\u003e`isSso \u003c/span\u003e= true`. Setting at least one block sets \u003cspan pulumi-lang-nodejs=\"`hasRestrictedSubuserAccess \" pulumi-lang-dotnet=\"`HasRestrictedSubuserAccess \" pulumi-lang-go=\"`hasRestrictedSubuserAccess \" pulumi-lang-python=\"`has_restricted_subuser_access \" pulumi-lang-yaml=\"`hasRestrictedSubuserAccess \" pulumi-lang-java=\"`hasRestrictedSubuserAccess \" pulumi-lang-hcl=\"`has_restricted_subuser_access \"\u003e`hasRestrictedSubuserAccess \u003c/span\u003e= true` on the API. This attribute is also computed: when no block is managed it reflects the teammate's current server-side access without producing a diff, and removing all blocks falls back to that server value rather than clearing access (Terraform does not clobber access it does not manage)."
                 },
                 "userStatus": {
                     "type": "string",
@@ -1350,7 +1350,7 @@
                 },
                 "isSso": {
                     "type": "boolean",
-                    "description": "Whether this is a Single Sign-On (SSO) user. SSO users require\u003cspan pulumi-lang-nodejs=\" firstName \" pulumi-lang-dotnet=\" FirstName \" pulumi-lang-go=\" firstName \" pulumi-lang-python=\" first_name \" pulumi-lang-yaml=\" firstName \" pulumi-lang-java=\" firstName \"\u003e firstName \u003c/span\u003eand last_name."
+                    "description": "Whether this is a Single Sign-On (SSO) user. SSO users require\u003cspan pulumi-lang-nodejs=\" firstName \" pulumi-lang-dotnet=\" FirstName \" pulumi-lang-go=\" firstName \" pulumi-lang-python=\" first_name \" pulumi-lang-yaml=\" firstName \" pulumi-lang-java=\" firstName \" pulumi-lang-hcl=\" first_name \"\u003e firstName \u003c/span\u003eand last_name."
                 },
                 "lastName": {
                     "type": "string",
@@ -1361,14 +1361,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of permission scopes for the teammate. Ignored if\u003cspan pulumi-lang-nodejs=\" isAdmin \" pulumi-lang-dotnet=\" IsAdmin \" pulumi-lang-go=\" isAdmin \" pulumi-lang-python=\" is_admin \" pulumi-lang-yaml=\" isAdmin \" pulumi-lang-java=\" isAdmin \"\u003e isAdmin \u003c/span\u003eis true. Cannot include '2fa_exempt' or '2fa_required' as these are managed automatically by SendGrid. This attribute is also computed: leaving it unset keeps whatever scopes the teammate currently has on the server instead of clearing them, and it must be left unset for a teammate with subuser_access, because SendGrid refuses root scopes for those teammates. See SendGrid API documentation for available scopes."
+                    "description": "List of permission scopes for the teammate. Ignored if\u003cspan pulumi-lang-nodejs=\" isAdmin \" pulumi-lang-dotnet=\" IsAdmin \" pulumi-lang-go=\" isAdmin \" pulumi-lang-python=\" is_admin \" pulumi-lang-yaml=\" isAdmin \" pulumi-lang-java=\" isAdmin \" pulumi-lang-hcl=\" is_admin \"\u003e isAdmin \u003c/span\u003eis true. Cannot include '2fa_exempt' or '2fa_required' as these are managed automatically by SendGrid. This attribute is also computed: leaving it unset keeps whatever scopes the teammate currently has on the server instead of clearing them, and it must be left unset for a teammate with subuser_access, because SendGrid refuses root scopes for those teammates. See SendGrid API documentation for available scopes."
                 },
                 "subuserAccesses": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sendgrid:index/TeammateSubuserAccess:TeammateSubuserAccess"
                     },
-                    "description": "Subuser permission grants for this SSO teammate. Only applies when \u003cspan pulumi-lang-nodejs=\"`isSso \" pulumi-lang-dotnet=\"`IsSso \" pulumi-lang-go=\"`isSso \" pulumi-lang-python=\"`is_sso \" pulumi-lang-yaml=\"`isSso \" pulumi-lang-java=\"`isSso \"\u003e`isSso \u003c/span\u003e= true`. Setting at least one block sets \u003cspan pulumi-lang-nodejs=\"`hasRestrictedSubuserAccess \" pulumi-lang-dotnet=\"`HasRestrictedSubuserAccess \" pulumi-lang-go=\"`hasRestrictedSubuserAccess \" pulumi-lang-python=\"`has_restricted_subuser_access \" pulumi-lang-yaml=\"`hasRestrictedSubuserAccess \" pulumi-lang-java=\"`hasRestrictedSubuserAccess \"\u003e`hasRestrictedSubuserAccess \u003c/span\u003e= true` on the API. This attribute is also computed: when no block is managed it reflects the teammate's current server-side access without producing a diff, and removing all blocks falls back to that server value rather than clearing access (Terraform does not clobber access it does not manage)."
+                    "description": "Subuser permission grants for this SSO teammate. Only applies when \u003cspan pulumi-lang-nodejs=\"`isSso \" pulumi-lang-dotnet=\"`IsSso \" pulumi-lang-go=\"`isSso \" pulumi-lang-python=\"`is_sso \" pulumi-lang-yaml=\"`isSso \" pulumi-lang-java=\"`isSso \" pulumi-lang-hcl=\"`is_sso \"\u003e`isSso \u003c/span\u003e= true`. Setting at least one block sets \u003cspan pulumi-lang-nodejs=\"`hasRestrictedSubuserAccess \" pulumi-lang-dotnet=\"`HasRestrictedSubuserAccess \" pulumi-lang-go=\"`hasRestrictedSubuserAccess \" pulumi-lang-python=\"`has_restricted_subuser_access \" pulumi-lang-yaml=\"`hasRestrictedSubuserAccess \" pulumi-lang-java=\"`hasRestrictedSubuserAccess \" pulumi-lang-hcl=\"`has_restricted_subuser_access \"\u003e`hasRestrictedSubuserAccess \u003c/span\u003e= true` on the API. This attribute is also computed: when no block is managed it reflects the teammate's current server-side access without producing a diff, and removing all blocks falls back to that server value rather than clearing access (Terraform does not clobber access it does not manage)."
                 },
                 "username": {
                     "type": "string",
@@ -1397,7 +1397,7 @@
                     },
                     "isSso": {
                         "type": "boolean",
-                        "description": "Whether this is a Single Sign-On (SSO) user. SSO users require\u003cspan pulumi-lang-nodejs=\" firstName \" pulumi-lang-dotnet=\" FirstName \" pulumi-lang-go=\" firstName \" pulumi-lang-python=\" first_name \" pulumi-lang-yaml=\" firstName \" pulumi-lang-java=\" firstName \"\u003e firstName \u003c/span\u003eand last_name."
+                        "description": "Whether this is a Single Sign-On (SSO) user. SSO users require\u003cspan pulumi-lang-nodejs=\" firstName \" pulumi-lang-dotnet=\" FirstName \" pulumi-lang-go=\" firstName \" pulumi-lang-python=\" first_name \" pulumi-lang-yaml=\" firstName \" pulumi-lang-java=\" firstName \" pulumi-lang-hcl=\" first_name \"\u003e firstName \u003c/span\u003eand last_name."
                     },
                     "lastName": {
                         "type": "string",
@@ -1408,14 +1408,14 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "List of permission scopes for the teammate. Ignored if\u003cspan pulumi-lang-nodejs=\" isAdmin \" pulumi-lang-dotnet=\" IsAdmin \" pulumi-lang-go=\" isAdmin \" pulumi-lang-python=\" is_admin \" pulumi-lang-yaml=\" isAdmin \" pulumi-lang-java=\" isAdmin \"\u003e isAdmin \u003c/span\u003eis true. Cannot include '2fa_exempt' or '2fa_required' as these are managed automatically by SendGrid. This attribute is also computed: leaving it unset keeps whatever scopes the teammate currently has on the server instead of clearing them, and it must be left unset for a teammate with subuser_access, because SendGrid refuses root scopes for those teammates. See SendGrid API documentation for available scopes."
+                        "description": "List of permission scopes for the teammate. Ignored if\u003cspan pulumi-lang-nodejs=\" isAdmin \" pulumi-lang-dotnet=\" IsAdmin \" pulumi-lang-go=\" isAdmin \" pulumi-lang-python=\" is_admin \" pulumi-lang-yaml=\" isAdmin \" pulumi-lang-java=\" isAdmin \" pulumi-lang-hcl=\" is_admin \"\u003e isAdmin \u003c/span\u003eis true. Cannot include '2fa_exempt' or '2fa_required' as these are managed automatically by SendGrid. This attribute is also computed: leaving it unset keeps whatever scopes the teammate currently has on the server instead of clearing them, and it must be left unset for a teammate with subuser_access, because SendGrid refuses root scopes for those teammates. See SendGrid API documentation for available scopes."
                     },
                     "subuserAccesses": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/sendgrid:index/TeammateSubuserAccess:TeammateSubuserAccess"
                         },
-                        "description": "Subuser permission grants for this SSO teammate. Only applies when \u003cspan pulumi-lang-nodejs=\"`isSso \" pulumi-lang-dotnet=\"`IsSso \" pulumi-lang-go=\"`isSso \" pulumi-lang-python=\"`is_sso \" pulumi-lang-yaml=\"`isSso \" pulumi-lang-java=\"`isSso \"\u003e`isSso \u003c/span\u003e= true`. Setting at least one block sets \u003cspan pulumi-lang-nodejs=\"`hasRestrictedSubuserAccess \" pulumi-lang-dotnet=\"`HasRestrictedSubuserAccess \" pulumi-lang-go=\"`hasRestrictedSubuserAccess \" pulumi-lang-python=\"`has_restricted_subuser_access \" pulumi-lang-yaml=\"`hasRestrictedSubuserAccess \" pulumi-lang-java=\"`hasRestrictedSubuserAccess \"\u003e`hasRestrictedSubuserAccess \u003c/span\u003e= true` on the API. This attribute is also computed: when no block is managed it reflects the teammate's current server-side access without producing a diff, and removing all blocks falls back to that server value rather than clearing access (Terraform does not clobber access it does not manage)."
+                        "description": "Subuser permission grants for this SSO teammate. Only applies when \u003cspan pulumi-lang-nodejs=\"`isSso \" pulumi-lang-dotnet=\"`IsSso \" pulumi-lang-go=\"`isSso \" pulumi-lang-python=\"`is_sso \" pulumi-lang-yaml=\"`isSso \" pulumi-lang-java=\"`isSso \" pulumi-lang-hcl=\"`is_sso \"\u003e`isSso \u003c/span\u003e= true`. Setting at least one block sets \u003cspan pulumi-lang-nodejs=\"`hasRestrictedSubuserAccess \" pulumi-lang-dotnet=\"`HasRestrictedSubuserAccess \" pulumi-lang-go=\"`hasRestrictedSubuserAccess \" pulumi-lang-python=\"`has_restricted_subuser_access \" pulumi-lang-yaml=\"`hasRestrictedSubuserAccess \" pulumi-lang-java=\"`hasRestrictedSubuserAccess \" pulumi-lang-hcl=\"`has_restricted_subuser_access \"\u003e`hasRestrictedSubuserAccess \u003c/span\u003e= true` on the API. This attribute is also computed: when no block is managed it reflects the teammate's current server-side access without producing a diff, and removing all blocks falls back to that server value rather than clearing access (Terraform does not clobber access it does not manage)."
                     },
                     "userStatus": {
                         "type": "string",
@@ -1491,7 +1491,7 @@
                 },
                 "generatePlainContent": {
                     "type": "boolean",
-                    "description": "If true (default),\u003cspan pulumi-lang-nodejs=\" plainContent \" pulumi-lang-dotnet=\" PlainContent \" pulumi-lang-go=\" plainContent \" pulumi-lang-python=\" plain_content \" pulumi-lang-yaml=\" plainContent \" pulumi-lang-java=\" plainContent \"\u003e plainContent \u003c/span\u003eis always generated from html_content. If false,\u003cspan pulumi-lang-nodejs=\" plainContent \" pulumi-lang-dotnet=\" PlainContent \" pulumi-lang-go=\" plainContent \" pulumi-lang-python=\" plain_content \" pulumi-lang-yaml=\" plainContent \" pulumi-lang-java=\" plainContent \"\u003e plainContent \u003c/span\u003eis not altered."
+                    "description": "If true (default),\u003cspan pulumi-lang-nodejs=\" plainContent \" pulumi-lang-dotnet=\" PlainContent \" pulumi-lang-go=\" plainContent \" pulumi-lang-python=\" plain_content \" pulumi-lang-yaml=\" plainContent \" pulumi-lang-java=\" plainContent \" pulumi-lang-hcl=\" plain_content \"\u003e plainContent \u003c/span\u003eis always generated from html_content. If false,\u003cspan pulumi-lang-nodejs=\" plainContent \" pulumi-lang-dotnet=\" PlainContent \" pulumi-lang-go=\" plainContent \" pulumi-lang-python=\" plain_content \" pulumi-lang-yaml=\" plainContent \" pulumi-lang-java=\" plainContent \" pulumi-lang-hcl=\" plain_content \"\u003e plainContent \u003c/span\u003eis not altered."
                 },
                 "htmlContent": {
                     "type": "string",
@@ -1545,7 +1545,7 @@
                 },
                 "generatePlainContent": {
                     "type": "boolean",
-                    "description": "If true (default),\u003cspan pulumi-lang-nodejs=\" plainContent \" pulumi-lang-dotnet=\" PlainContent \" pulumi-lang-go=\" plainContent \" pulumi-lang-python=\" plain_content \" pulumi-lang-yaml=\" plainContent \" pulumi-lang-java=\" plainContent \"\u003e plainContent \u003c/span\u003eis always generated from html_content. If false,\u003cspan pulumi-lang-nodejs=\" plainContent \" pulumi-lang-dotnet=\" PlainContent \" pulumi-lang-go=\" plainContent \" pulumi-lang-python=\" plain_content \" pulumi-lang-yaml=\" plainContent \" pulumi-lang-java=\" plainContent \"\u003e plainContent \u003c/span\u003eis not altered."
+                    "description": "If true (default),\u003cspan pulumi-lang-nodejs=\" plainContent \" pulumi-lang-dotnet=\" PlainContent \" pulumi-lang-go=\" plainContent \" pulumi-lang-python=\" plain_content \" pulumi-lang-yaml=\" plainContent \" pulumi-lang-java=\" plainContent \" pulumi-lang-hcl=\" plain_content \"\u003e plainContent \u003c/span\u003eis always generated from html_content. If false,\u003cspan pulumi-lang-nodejs=\" plainContent \" pulumi-lang-dotnet=\" PlainContent \" pulumi-lang-go=\" plainContent \" pulumi-lang-python=\" plain_content \" pulumi-lang-yaml=\" plainContent \" pulumi-lang-java=\" plainContent \" pulumi-lang-hcl=\" plain_content \"\u003e plainContent \u003c/span\u003eis not altered."
                 },
                 "htmlContent": {
                     "type": "string",
@@ -1589,7 +1589,7 @@
                     },
                     "generatePlainContent": {
                         "type": "boolean",
-                        "description": "If true (default),\u003cspan pulumi-lang-nodejs=\" plainContent \" pulumi-lang-dotnet=\" PlainContent \" pulumi-lang-go=\" plainContent \" pulumi-lang-python=\" plain_content \" pulumi-lang-yaml=\" plainContent \" pulumi-lang-java=\" plainContent \"\u003e plainContent \u003c/span\u003eis always generated from html_content. If false,\u003cspan pulumi-lang-nodejs=\" plainContent \" pulumi-lang-dotnet=\" PlainContent \" pulumi-lang-go=\" plainContent \" pulumi-lang-python=\" plain_content \" pulumi-lang-yaml=\" plainContent \" pulumi-lang-java=\" plainContent \"\u003e plainContent \u003c/span\u003eis not altered."
+                        "description": "If true (default),\u003cspan pulumi-lang-nodejs=\" plainContent \" pulumi-lang-dotnet=\" PlainContent \" pulumi-lang-go=\" plainContent \" pulumi-lang-python=\" plain_content \" pulumi-lang-yaml=\" plainContent \" pulumi-lang-java=\" plainContent \" pulumi-lang-hcl=\" plain_content \"\u003e plainContent \u003c/span\u003eis always generated from html_content. If false,\u003cspan pulumi-lang-nodejs=\" plainContent \" pulumi-lang-dotnet=\" PlainContent \" pulumi-lang-go=\" plainContent \" pulumi-lang-python=\" plain_content \" pulumi-lang-yaml=\" plainContent \" pulumi-lang-java=\" plainContent \" pulumi-lang-hcl=\" plain_content \"\u003e plainContent \u003c/span\u003eis not altered."
                     },
                     "htmlContent": {
                         "type": "string",
